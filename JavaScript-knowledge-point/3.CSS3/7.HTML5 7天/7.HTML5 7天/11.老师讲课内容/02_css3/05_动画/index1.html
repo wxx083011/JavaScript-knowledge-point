@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			@keyframes tushiji{
+				from{
+					background-position:0;
+				}
+				to{
+					background-position:-576px 0;
+				}
+			}
+			
+			#tushiji{
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				margin: auto;
+				width: 48px;
+				height: 48px;
+				background: url(img/animation.png) no-repeat;
+				background-position:0 ;
+				animation: tushiji .5s steps(12) infinite;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="tushiji">
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="test" data-atguigu="尚硅谷" data-atguigu-xfz="张晓飞">div</div>
+	</body>
+	<script>
+		window.onload = function(){
+			var testNode = document.getElementById('test');
+			
+			alert( testNode.dataset.atguigu );
+			alert( testNode.dataset.atguiguXfz );
+			
+			testNode.dataset.atguigu="尚硅谷牛";
+			testNode.dataset.atguiguXfz="张晓飞牛";
+		};
+	</script>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#test{
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				background: gray;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<canvas id="test" ></canvas>
+	</body>
+	<script type="text/javascript">
+		
+		var testNode = document.querySelector("#test");
+		if(test.getContext){
+			var ctx = testNode.getContext("2d");
+			var img = new Image();
+			img.src="2.png";
+			img.onload=function(){
+				draw(this);
+			}
+		}
+		
+		function draw(img){
+			testNode.width = img.width*2;
+			testNode.height = img.height;
+			ctx.drawImage(img,0,0);
+			
+			var newImg = ctx.createImageData(img.width,img.height);
+			var oldImg = ctx.getImageData(0,0,img.width,img.height);
+			
+			//马赛克矩形的大小   w:一行上马赛克矩形的个数   h:一列上马赛克矩形的个数
+			var num =5;
+			var w = oldImg.width/num;
+			var h = oldImg.height/num;
+
+			for(var i =0;i<w;i++){
+				for(var j=0;j<h;j++){
+					
+					//在原始5*5的矩形中随机挑出一个点
+					var color = getXY(oldImg,Math.round(i*num+Math.random()*5),Math.round(j*num+Math.random()*5));
+					
+					for(var k=0;k<num;k++){
+						for(var l=0;l<num;l++){
+							setXY(newImg,i*num+k,j*num+l,color);
+						}
+					}
+					
+				}
+			}
+			
+			ctx.putImageData(newImg,oldImg.width,0);
+		}
+		
+		function setXY(obj,x,y,color){
+			var h = obj.height;
+			var w = obj.width;
+			var d = obj.data;
+			
+			d[4*(y*w+x)]   = color[0];
+			d[4*(y*w+x)+1] = color[1];
+			d[4*(y*w+x)+2] = color[2];
+			d[4*(y*w+x)+3] = color[3];
+		}
+		
+		function getXY(obj,x,y){
+			var h = obj.height;
+			var w = obj.width;
+			var d = obj.data;
+			
+			var data=[];
+			
+			data[0] = d[4*(y*w+x)];
+			data[1] = d[4*(y*w+x)+1];
+			data[2] = d[4*(y*w+x)+2];
+			data[3] = d[4*(y*w+x)+3];
+			
+			return data;
+		}
+	</script>
+</html>

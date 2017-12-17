@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title>04_横向滑屏(轮播)</title>
+		<style type="text/css" id="css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wapper {
+				position: relative;/*供nav绝对定位使用*/
+				overflow: hidden;
+			}
+			#list{
+				overflow: hidden;/*清浮动*/
+				list-style: none;
+			}
+			#list li{
+				float: left;
+			}
+			#list li img { /*js写完之后再加*/
+				width: 100%;
+				display: block;/*解决img撑a标签空隙3px*/
+			}
+			
+			
+			
+			
+			
+			#nav {
+				position: absolute;
+				left: 0;
+				bottom: 3px;
+				width: 100%;/*使小原点居中*/
+				line-height: 10px;
+				text-align: center;
+			}
+			#nav span {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				background: #C00;
+				border-radius: 5px;/*在移动端最好使用px值,百分比在有些设备下会失效*/
+			}
+			#nav .active {
+				background: #0F0;
+			}
+		</style>
+		<script type="text/javascript">
+			
+			document.addEventListener(
+				"touchstart",
+				function(ev){
+					ev.preventDefault();
+				}
+			);
+			
+			window.onload=function(){
+				var css = document.querySelector("#css");
+				var wrap = document.querySelector("#wapper");
+				var list = document.querySelector("#list");
+				var lis = document.querySelectorAll("#list li");
+				var nav = document.querySelectorAll("#nav span");
+				
+				
+				/*问题:
+					1.ul拿的是父元素的100%--->一路往上找--->414px
+					2.ul的宽度应该为414 * li的个数 才能在一行放下所有的li
+					3.li应该设置为 (1/lis.length*100)%
+					4.img的样式应该控制为 宽高自适应
+				*/
+				
+				var style="#list{width:"+lis.length+"00%}";
+					style+="#list li{width:"+(1/lis.length*100)+"%}"
+					css.innerHTML+= style;
+			}
+		</script>
+	</head>
+	<body>
+		<div id="wapper">
+			<ul id="list">
+				<li>
+					<a href="javascript:viod(0)">
+						<img src="img/1.jpg" />
+					</a>
+				</li>
+				<li>
+					<a href="javascript:viod(0)">
+						<img src="img/2.jpg" />
+					</a>
+				</li>
+				<li>
+					<a href="javascript:viod(0)">
+						<img src="img/3.jpg" />
+					</a>
+				</li>
+				<li>
+					<a href="javascript:viod(0)">
+						<img src="img/4.jpg" />
+					</a>
+				</li>
+				<li>
+					<a href="javascript:viod(0)">
+						<img src="img/5.jpg" />
+					</a>
+				</li>
+			</ul>
+		
+			<nav id="nav">
+		    	<span class="active"></span>
+		        <span></span>
+		        <span></span>
+		        <span></span>
+		        <span></span>
+	    	</nav>
+    	</div>
+	</body>
+</html>

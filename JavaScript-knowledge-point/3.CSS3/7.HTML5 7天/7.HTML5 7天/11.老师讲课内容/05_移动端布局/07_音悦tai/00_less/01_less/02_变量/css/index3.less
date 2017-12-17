@@ -1,0 +1,16 @@
+/*我是可以见人的注释*/
+//我是见不得人的注释
+@zero:0;
+@selector:wrap;
+@url:"img/zdy.jpg";
+*{
+    margin: @zero;
+    padding: @zero;
+}
+#@{selector}{
+    width: 300px;
+    height: 400px;
+    border: 1px solid;
+    margin: @zero auto;
+    background: url("@{url}") no-repeat;
+}

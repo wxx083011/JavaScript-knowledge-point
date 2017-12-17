@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--
+		视口的尺寸，大小
+			本质都是代表这个视口所包含的css像素的个数(注意与css像素的大小面积相区分)！！！！！！！！
+		-->
+		
+	</head>
+	<body style="height: 3000px;">
+		
+	</body>
+	<script type="text/javascript">
+		//获取pc端视口的大小  最干净那个视口
+		console.log(document.documentElement.clientWidth);
+		
+		//获取pc端浏览器视口（viewport）宽度（单位：像素），如果存在垂直滚动条则包括它。
+		console.log(window.innerWidth);
+		
+		//获取pc端浏览器窗口外部的宽度。表示整个浏览器窗口的宽度，包括侧边栏（如果存在）、窗口镶边（window chrome）和调正窗口大小的边框
+		console.log(window.outerWidth);
+		
+		//获取pc端屏幕的分辨率
+		console.log(window.screen.width);
+		
+	</script>
+</html>

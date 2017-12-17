@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<script>
+/*
+	非布尔值的属性,attriute和proterty会实时同步
+	
+	监控一下:
+	oCheck1.name;
+	oCheck1.attributes.name.nodeValue;
+*/
+window.onload = function (){
+	var oCheck1 = document.getElementById('check1');
+	var op =document.getElementById('p1');	
+	var oBtn = document.getElementById('btn1');
+	
+	oBtn.onclick = function (){
+		oCheck1.name="test1";
+		oCheck1.name="test2";
+		oCheck1.name="test3";
+
+		oCheck1.setAttribute("name","test4");
+		oCheck1.setAttribute("name","test5");
+		oCheck1.setAttribute("name","test6");
+
+	};
+};
+</script>
+
+</head>
+
+<body>
+
+<input id="check1" name="checkName" type="checkbox" />
+<input id="btn1" type="button" value="按钮" />
+<p id="p1">这是一些文字</p>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>02_拖拽</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+	</body>
+	<script>
+		var oBox = document.getElementById("box");
+		oBox.onmousedown=function(ev){
+			var ev = ev||event;
+			var disX = ev.clientX - getPos(oBox).left;
+			var disY = ev.clientY - getPos(oBox).top;
+			
+			
+			document.onmousemove=function(ev){
+				var ev = ev||event;
+				var nowPoint={x:0,y:0};
+				oBox.style.left = ev.clientX - disX + 'px';
+				oBox.style.top = ev.clientY - disY + 'px';
+			}
+			
+			document.onmouseup=function(){
+				document.onmousemove = document.onmouseup = null;
+			}
+		}
+		
+		function getPos(obj) {
+			var pos = {left:0, top:0};
+			while (obj) {
+				pos.left += obj.offsetLeft;
+				pos.top += obj.offsetTop;
+				obj = obj.offsetParent;
+			}
+			return pos;
+		}
+	</script>
+</html>

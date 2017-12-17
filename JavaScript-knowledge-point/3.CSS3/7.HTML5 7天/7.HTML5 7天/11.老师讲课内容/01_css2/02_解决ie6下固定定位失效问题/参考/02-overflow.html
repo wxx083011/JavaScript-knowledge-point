@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--
+			html上的overflow属性到底作用给了谁?
+				给了html的上一层,我们可以称它为document.
+		-->
+		<style>
+		
+			html{
+				border: solid 1px blue;
+				height: 300px;
+				margin: 30px;
+				overflow: auto;
+				overflow: hidden;
+				overflow: scroll;
+			}
+			
+			div{
+				border: solid 1px black;
+				width: 100px;
+				height: 3000px;
+				background: red;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div>
+		
+		</div>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>音频</title>
+		<!--
+			currentTime :  开始到播放现在所用的时间(可读写)
+			duration    :  媒体总时间(只读)
+			muted       :  是否静音(可读写,相比于volume优先级要高)
+			volume      :  0.0-1.0的音量相对值(可读写)
+			paused      :  媒体是否暂停(只读)
+			ended       :  媒体是否播放完毕(只读)
+			error       :  媒体发生错误的时候，返回错误代码 (只读)
+			currentSrc  :  以字符串的形式返回媒体地址(只读)
+		-->
+	</head>
+	<body>
+		<video id="testV" src="media/sp/OUTPUT.mp4" controls width="300" height="300">
+			您的浏览器不支持音频播放（此处的替换的内容不局限于文本信息，可以换成Flash播放器等视频播放插件，或者直接给出媒体文件的链接地址）
+		</video>
+		
+		<audio  id="testA" src="media/yp/OUTPUT.mp3" controls></audio>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var testV = document.getElementById("testV");
+			testV.currentTime=60;
+			testV.muted =true;
+			testV.volume =.5;
+			console.log(testV.duration);
+			console.log(testV.muted);
+			console.log(testV.volume);
+			console.log(testV.paused);
+			console.log(testV.ended);
+			console.log(testV.error);
+			console.log(testV.currentSrc);
+			
+			
+			
+			var testA = document.getElementById("testA");
+			testA.currentTime=60;
+			testA.muted =true;
+			testA.volume =.5;
+			console.log(testA.duration);
+			console.log(testA.muted);
+			console.log(testA.volume);
+			console.log(testA.paused);
+			console.log(testA.ended);
+			console.log(testA.error);
+			console.log(testA.currentSrc);
+			
+			setInterval(function(){
+//				console.log(testV.currentTime);
+				console.log(testA.currentTime);
+			},1000)
+		}
+	</script>
+</html>

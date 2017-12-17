@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title></title>
+		<link href="css/index.css" rel="stylesheet"/>
+		<script type="text/javascript">
+			setRem();
+			window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+		        setRem();
+	    	}, false); 
+			
+			function setRem() {
+				var html = document.querySelector("html");
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 16 + "px";
+			}
+		</script>
+	</head>
+	<body>
+		<section class="wrap">
+			<!--音悦台头部-->
+			<header id="header">
+				<!--logo 按钮区-->
+				<div class="headerT">
+					<!--logo-->
+					<h1 id="logo">
+						<a href="#">
+							<img src="img/logo.png" />
+						</a>
+					</h1>
+					<!--菜单按钮-->
+					<a href="#" id="menuBtn" class="menuBtnClos"></a>
+					<!--按钮排-->
+					<div id="btns">
+						<a href="#" class="searchBtn">搜索</a>
+						<a href="#">登陆</a>
+						<a href="#">注册</a>
+					</div>
+				</div>
+				
+				<!--搜索区-->
+				<form class="search">
+					<input type="text" placeholder="请输入搜索内容">
+					<input type="submit" value="搜索">
+				</form>
+				
+				<!--菜单列表-->
+				<ul id="nav">
+					<li>
+			            <a href="javascript:void(0);" class="" data-tab="index">首页</a>
+			        </li>
+			        <li>
+			            <a href="javascript:void(0);" data-tab="mv" class="">MV</a>
+			        </li>
+			        <li>
+			            <a href="javascript:void(0);" data-tab="pl" class="">悦单</a>
+			        </li>
+			        <li>
+			            <a href="javascript:void(0);" data-tab="vchart" class="">V榜</a>
+			        </li>
+				    <li><a href="javascript:void(0);" class="">音悦stage</a></li>
+			        <li>
+			            <a href="javascript:void(0);" data-tab="wapfan" class="">商城</a>
+			        </li>
+			        <li>
+			            <a href="javascript:void(0);" data-tab="program" class="">节目</a>
+			        </li>
+			        <li>
+			            <a href="javascript:void(0);" data-tab="stage" class="">饭团</a>
+			        </li>
+			        <li>
+			            <a href="javascript:void(0);" data-tab="apps/mobile" class="">资讯</a>
+			        </li>
+			        <li>
+			            <a href="javascript:void(0);" target="_blank" class="">我的家</a>
+			        </li>
+			        <li>
+			            <a href="javascript:void(0);" target="_blank" class="selected">APP下载</a>
+			        </li>
+			        <li>
+			            <a href="javascript:void(0);" data-tab="apps" class="">热门应用</a>
+			        </li>
+				</ul>
+			</header>
+			<!--音悦台内容区-->
+			<section class="content">
+					<!--可拖拽导航-->
+					<nav id="navScroll">
+						<ul id="navs">
+							<li class="active">
+					            <a href="javascript:void(0);" class="" data-tab="index">首页</a>
+					        </li>
+					        <li>
+					            <a href="javascript:void(0);" data-tab="mv" class="">MV</a>
+					        </li>
+					        <li>
+					            <a href="javascript:void(0);" data-tab="pl" class="">悦单</a>
+					        </li>
+					        <li>
+					            <a href="javascript:void(0);" data-tab="vchart" class="">V榜</a>
+					        </li>
+					        <li>
+					            <a href="javascript:void(0);" data-tab="vchart" class="">商城</a>
+					        </li>
+						    <li>
+						    	<a href="javascript:void(0);" class="">众筹</a>
+						    </li>
+					        <li>
+					            <a href="javascript:void(0);" data-tab="wapfan" class="">饭团</a>
+					        </li>
+					        <li>
+					            <a href="javascript:void(0);" data-tab="program" class="">节目</a>
+					       	</li>
+					       <li>
+					            <a href="javascript:void(0);" data-tab="stage" class="">音悦stage</a>
+					        </li>
+					        <li>
+					            <a href="javascript:void(0);" data-tab="apps/mobile" class="">APP下载</a>
+					        </li>
+					        <li>
+					            <a href="javascript:void(0);" target="_blank" class="">资讯</a>
+					        </li>
+					        <li>
+					            <a href="javascript:void(0);" target="_blank" class="selected">我的家</a>
+					        </li>
+					        <li>
+					            <a href="javascript:void(0);" data-tab="apps" class="">热门应用</a>
+					        </li>
+						</ul>
+					</nav>
+			
+					<!--轮播图-->
+					<div id="picTab">
+						<ul id="picList">
+							<li>
+								<a href="javascript:viod(0);">
+									<img src="img/1.jpg"/>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:viod(0);">
+									<img src="img/2.jpg"/>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:viod(0);">
+									<img src="img/3.jpg"/>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:viod(0);">
+									<img src="img/4.jpg"/>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:viod(0);">
+									<img src="img/5.jpg"/>
+								</a>
+							</li>
+						</ul>
+						
+						<nav id="picNav">
+							<span class="active"></span>
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+						</nav>
+					</div>
+			
+					<!--同步的选项卡-->
+					<section class="tab">
+						<header class="tabHeader">
+							<h2>MV首播</h2>
+							<a href="#">更多</a>
+						</header>
+						<nav class="tabNav">
+							<a href="javascript:;" class="J_area cur" data-area="all">全部</a>
+							<a href="javascript:;" class="J_area" data-area="ml">内地</a>
+							<a href="javascript:;" class="J_area" data-area="ht">港台</a>
+							<a href="javascript:;" class="J_area" data-area="us">欧美</a>
+							<a href="javascript:;" class="J_area" data-area="kr">韩国</a>
+							<a href="javascript:;" class="J_area" data-area="jp">日本</a>
+							<span></span>
+						</nav>
+						<section class="tabList">
+							<ul class="tabNext">
+							
+							</ul>
+							<ul class="tabShow">
+								<li>
+									<a href="#">
+										<img src="img/a.jpg"/>
+										<span>云画的月光 完整版</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="img/b.jpg"/>
+										<span>WILD WILD WILD</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="img/c.jpg"/>
+										<span>欲望付出 官方版</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="img/d.jpg"/>
+										<span>NOIR～ノワール～ </span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="img/e.jpg"/>
+										<span>Circles</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="img/f.jpg"/>
+										<span>当我们混在一起 夏日泳池版</span>
+									</a>
+								</li>
+							</ul>
+							<ul class="tabNext">
+
+							</ul>
+						</section>
+					</section>
+			</section>
+		</section>
+	</body>
+	<script src="js/transform.js"></script>
+	<script type="text/javascript">
+		CMFCMenuBar(); 
+		dragNav();
+		carouselFigure();
+		tab();
+		
+		//菜单切换
+		function CMFCMenuBar() {
+			var btn =document.querySelector("#menuBtn");
+			var nav =document.querySelector("#nav");
+			
+			btn.addEventListener(
+//				"touchend", 不可以是touchend,与冒泡到document的touchstart有关
+				"touchstart",
+				function(e){
+					if(this.className=="menuBtnClos"){
+						btn.className = "menuBtnShow";
+						nav.style.display = "block";
+					}else {
+						btn.className = "menuBtnClos";
+						nav.style.display = "none";
+					}
+					e.stopPropagation();
+				}
+			);
+			
+//			防止事件点透,提高用户体验
+			nav.addEventListener("touchstart", function(e) {
+				e.stopPropagation();
+			});
+			
+			
+			document.addEventListener(
+//				为什么选用touchstart,为了提高用户在滑屏时的体验
+				"touchstart",
+				function(){
+					if(btn.className == "menuBtnShow"){
+						btn.className = "menuBtnClos";
+						nav.style.display = "none";
+					}
+				}
+			);
+			
+		}
+			
+		//可拖拽的导航
+		function dragNav(){
+			var navScroll =document.querySelector("#navScroll");
+			var navs =document.querySelector("#navs");
+			var startpoint = 0;
+			var startX=0;
+			
+			//限定拖拽范围
+			var minX = navScroll.clientWidth - navs.offsetWidth;
+			//拉力系数
+			var step = 1;
+			
+			var lastX = 0; //上次的距离
+			var lastTime = 0;//上次的时间戳
+			var lastDis = 0;
+			var lastTimeDis = 0;
+			navScroll.addEventListener(
+				"touchstart",
+				function(e){
+					
+					navs.style.transition = "none";
+					
+					startpoint =e.changedTouches[0].pageX;
+					startX = cssTransform(navs,"translateX");
+					step = 1;
+					
+					lastX = startX;
+					lastTime = new Date().getTime();
+					lastDis = 0;
+					lastTimeDis = 0;
+				}
+			);
+			
+			navScroll.addEventListener(
+				"touchmove",
+				function(e){
+					var nowpoint =e.changedTouches[0].pageX;
+					var dis = nowpoint-startpoint;
+					var left = startX+dis;
+					
+					var nowTime = new Date().getTime();
+					
+					if(left>0){
+						step = 1-(left / navScroll.clientWidth); 
+						left = parseInt(left*step);
+					}
+					if(left<minX){
+						var overRight = minX - left;
+						step= 1-(overRight / navScroll.clientWidth); 
+						overRight = parseInt(overRight*step);
+						left = minX - overRight;
+					}
+					
+					lastDis = left-lastX; //距离差值
+					lastTimeDis = nowTime - lastTime; //时间差值
+					lastX = left;
+					lastTime = nowTime;
+					
+					cssTransform(navs,"translateX",left);
+				}
+			);
+			
+			navScroll.addEventListener(
+				'touchend', 
+				function (){
+					var speed = (lastDis/lastTimeDis)*300; //用距离差值/时间差值 = 速度   速度*系数 = 缓冲距离
+					var left = cssTransform(navs,"translateX");
+					var target = left + speed; //当前值 + 缓冲距离 = 目标点
+					var type = "cubic-bezier(.34,.92,.58,.9)";
+					var time = Math.abs(speed*.9);
+					time = time<300?300:time;
+					if(target > 0) {
+						target = 0;
+						type ="cubic-bezier(.08,1.44,.6,1.46)";
+					}
+					if(target < minX) {
+						target = minX;
+						type ="cubic-bezier(.08,1.44,.6,1.46)";
+					}
+					navs.style.transition = time+"ms " + type;
+					cssTransform(navs,"translateX",target);
+				}
+			);
+			
+		}
+			
+		//轮播图
+		function carouselFigure(){
+			
+			var wrap = document.querySelector("#picTab");
+			var list = document.querySelector("#picList");
+			list.innerHTML += list.innerHTML;
+			var lis = document.querySelectorAll("#picList li");
+			var nav = document.querySelectorAll("#picNav span");
+			
+			//和transition一样的问题,执行快慢的问题
+			setTimeout(function(){
+				var css =document.createElement("style");
+				var style = "#picTab{height:"+ lis[0].offsetHeight+"px}";
+				style+="#picList{width:"+lis.length+"00%}";
+				style+="#picList li{width:"+(1/lis.length*100)+"%}"
+				css.innerHTML+= style;
+				document.head.appendChild(css);
+			},20)
+			
+			var clearTime=0;
+			var now =0;
+			var startPoint = 0;
+			var startX = 0;
+			var	dis =0;
+			
+			var isX =true;
+			var isFirst=true;
+			cssTransform(list,"translateX",0);
+//			auto();
+			
+			wrap.addEventListener(
+				"touchstart",
+				function(e) {
+					list.style.transition = "none";
+					
+					var translateX = cssTransform(list,"translateX");
+					now = Math.round(-translateX / wrap.offsetWidth);
+					//注意nav中span的个数必须是总li的一半
+					if(now == 0) {
+						now = nav.length;
+					}
+					if(now == lis.length-1) {
+						now = nav.length-1;
+					}
+					
+					startPoint = e.changedTouches[0];
+					
+					cssTransform(list,"translateX",-now * wrap.offsetWidth);
+					startX = cssTransform(list,"translateX");
+					
+					clearInterval(clearTime);
+					isX=true;
+					isFirst=true;
+				}
+			);
+			wrap.addEventListener(
+				"touchmove",
+				function(e) {
+					if(!isX){
+						return;
+					}
+					/*
+					1.y轴单次点击, move,抬起优化
+					2.y轴连续move优化(isX)
+					3.x轴连续move优化(isFirst)
+					*/
+					var nowPoint = e.changedTouches[0];
+					disX = nowPoint.pageX - startPoint.pageX;
+					disY = nowPoint.pageY - startPoint.pageY;
+					if(isFirst){
+						isFirst=false;
+							if(Math.abs(disY)>Math.abs(disX)){
+								isX=false;
+								return;
+							}
+					}
+					
+					cssTransform(list,"translateX",startX + disX)
+				}
+			);
+			wrap.addEventListener(
+				"touchend",
+				function(e) {
+					var translateX = cssTransform(list,"translateX");
+					
+					now = Math.round(-translateX / wrap.offsetWidth);
+//						if(dis>0){//向左滑 	floor向下取整
+//							 now = Math.floor(-translateX / wrap.offsetWidth);
+//						}else{	//向右滑		ceil向上取整
+//							 now = Math.ceil(-translateX / wrap.offsetWidth);
+//						}
+					
+					//限制触屏范围
+					if(now<0){
+						now=0;
+					}
+					if(now > lis.length-1) {
+						now = lis.length-1;
+					}
+					//新增过渡效果
+					autoMove();
+//					auto();
+				}
+			);
+			
+			function auto() {
+				 clearTime=setInterval(
+					function() {
+						if(now == lis.length-1){
+							now =nav.length-1;
+						}
+						list.style.transition = "none";
+						cssTransform(list,"translateX",-now * wrap.offsetWidth);
+						setTimeout(function(){
+							now++;
+							autoMove();
+						},20)
+					},2000);
+			}
+			
+			function autoMove(){
+				list.style.transition = "1s";
+				cssTransform(list,"translateX",-now * wrap.offsetWidth);
+				for(var i = 0 ; i < nav.length; i++) {
+					nav[i].className = "";
+				}
+				nav[now%nav.length].className = "active";
+			}
+		}
+	
+		//同步的选项卡
+		function tab(){
+			var tabList = document.querySelectorAll(".tabList");
+			var tabNav = document.querySelectorAll(".tabNav");
+			var width = tabNav[0].offsetWidth;
+			for(var i = 0; i < tabNav.length; i++) {
+				swipe(tabNav[i],tabList[i]);
+			}
+			function swipe(nav,list){
+				cssTransform(list,"translateX",-width);
+				var startPoint = 0;
+				var startX = 0;
+				var isMove = true;
+				var isFirst = true;
+				var next = document.querySelectorAll(".tabNext");
+				var isLoad = true;
+				list.addEventListener(
+					"touchstart",
+					function(e) {
+						if(!isLoad) {
+							return;
+						}
+						list.style.transition = "none";
+						startPoint = e.changedTouches[0];
+						startX = cssTransform(list,"translateX");
+						isMove = true;
+						isFirst = true;
+					}
+				);
+				list.addEventListener(
+					"touchmove",
+					function(e) {
+						if(!isLoad) {
+							return;
+						}
+						if(!isMove) {
+							return;
+						}
+						var nowPoint = e.changedTouches[0];
+						var disX = nowPoint.pageX - startPoint.pageX;
+						var disY = nowPoint.pageY - startPoint.pageY;
+						if(isFirst) {
+							isFirst = false;
+							if(Math.abs(disY) > Math.abs(disX)) {
+								isMove = false;
+							}
+						}
+						if(isMove) {
+							cssTransform(list,"translateX",startX + disX);
+						}
+						if(Math.abs(disX) > width/2){
+							end(disX);
+						}
+					}
+				);
+				function end(disX){
+					isLoad = false;
+					var dir = disX/Math.abs(disX); //正 右侧  负左侧
+					var target = dir > 0? 0: -2*width;
+					list.style.transition = "300ms";
+					cssTransform(list,"translateX",target);
+					list.addEventListener(
+						"webkitTransitionEnd",
+						tranEnd
+					);
+					list.addEventListener(
+						"transitionend",
+						tranEnd
+					);
+				}
+				function tranEnd(){
+					list.removeEventListener(
+						"webkitTransitionEnd",
+						tranEnd
+					);
+					list.removeEventListener(
+						"transitionend",
+						tranEnd
+					);
+					for(var i = 0; i < next.length; i++){
+						next[i].style.opacity = 1;
+					}
+					//模拟ajax请求
+					setTimeout(
+						function(){ /* 在工作的时候，应该通过ajax 请求数据，然后修改 show里边内容，之后执行代码*/
+							list.style.transition = "none";
+							cssTransform(list,"translateX",-width);
+							isLoad = true;
+						},1000
+					)
+				}
+			}
+		}
+
+	</script>
+</html>

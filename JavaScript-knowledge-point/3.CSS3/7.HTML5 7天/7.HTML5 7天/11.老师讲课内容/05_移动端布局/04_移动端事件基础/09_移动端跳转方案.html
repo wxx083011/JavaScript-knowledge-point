@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title>12_移动端跳转方案</title>
+		<!--
+			避免事件点透	
+			防止误触
+		-->
+	</head>
+	<body>
+		<a href="http://www.atguigu.com">回娘家</a>
+		<a href="http://www.atguigu.com">回娘家</a>
+		<a href="http://www.atguigu.com">回娘家</a>
+		<a href="http://www.atguigu.com">回娘家</a>
+		<a href="http://www.atguigu.com">回娘家</a>
+	</body>
+	<script type="text/javascript">
+		document.addEventListener("touchstart",function(ev){
+			ev.preventDefault();
+		})
+	
+		var aNodes =document.querySelectorAll("a");
+		for(var i=0;i<aNodes.length;i++){
+			aNodes[i].addEventListener("touchmove",function(){
+				if(!this.flag){
+					this.flag=true;
+				}
+			})
+			
+			
+			aNodes[i].addEventListener("touchend",function(){
+				if(!this.flag){
+					window.location.href=this.href;
+				}
+				this.flag=false;
+			})
+		}
+	</script>
+</html>

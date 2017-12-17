@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--
+			考虑 document html body;
+			
+			1.html body中只有一个有overflow属性时,这个属性会传给document
+			2.当且仅当html body都存在overflow属性时.body的overflow属性才能生效,
+			3.当html body都存在overflow属性时.body的overflow属性一直都会作用于body身上,
+										  html的overflow属性一直都会作用于document身上,
+		-->
+		<style>
+			html{
+				border: solid 1px blue;
+				margin: 30px;
+				height: 500px;
+				
+				/*overflow: auto;*/
+				/*overflow: hidden;*/
+				overflow: scroll;
+			}
+			
+			body{
+				border: solid 1px pink;
+				margin: 30px;
+				height: 300px;
+				
+				/*overflow: auto;*/
+				/*overflow: hidden;*/
+				overflow: scroll;
+			}
+			
+			#wapper{
+				border: solid 1px red;
+				margin: 30px;
+				height: 200px;
+			}
+			
+			#inner{
+				border: solid 1px black;
+				width: 100px;
+				height: 3000px;
+				background: lightslategray;
+				}
+		
+			
+		</style>
+	</head>
+	<body>
+		<div id="wapper">
+			<div id="inner"></div>
+		</div>
+	</body>
+</html>

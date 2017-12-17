@@ -1,0 +1,26 @@
+/*我是可以见人的注释*/
+//我是见不得人的注释
+@zero:0;
+@selector:wrap;
+*{
+    margin: @zero;
+    padding: @zero;
+}
+#@{selector}{
+    position: relative;
+    width: 300px;
+    height: 400px;
+    border: 1px solid;
+    margin: @zero auto;
+    #inner{
+        position: absolute;
+        left: @zero;
+        right: @zero;
+        top: @zero;
+        bottom: @zero;
+        margin: auto;
+        background: pink;
+        height: 100px;
+        width: 100px;
+    }
+}

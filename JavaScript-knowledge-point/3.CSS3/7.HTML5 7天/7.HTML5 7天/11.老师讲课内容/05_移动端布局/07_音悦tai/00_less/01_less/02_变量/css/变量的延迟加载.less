@@ -1,0 +1,10 @@
+@var: 0;
+.class {
+  @var: 1;
+    .brass {
+      @var: 2;
+      three: @var;  //这是的值是3
+      @var: 3;
+    }
+  one: @var;  //这是的值是1
+}

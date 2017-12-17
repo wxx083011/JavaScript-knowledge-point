@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<!--不传节点 传index-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>pc项目</title>
+		<style type="text/css">
+			/*cssreset start*/
+			html,body{height: 100%;overflow: hidden;}
+			html,body,h1,h2,h3,h4,h5,h6,p,ul,li{margin: 0px;padding: 0px;font: 14px "微软雅黑";}
+			a{text-decoration: none;display: block;}
+			li{list-style: none;}
+			img{display: block;}
+			/*cssreset end*/
+			/*common start*/
+			.clearfix{*zoom: 1;}
+			.clearfix:after{content:"";display: block;clear: both;}
+			.subhead{display: none;}
+			.commonTitle{ color:#009ee0; font-size:80px; line-height:0.8; 
+				font-weight:bold; letter-spacing:-5px;
+			}
+			.commonText{ color:white; line-height:1.5; font-size:15px;}
+			/*common end*/
+			/*head start*/
+			#head{background: white;height: 80px;}
+			#headMian{position: relative;width: 1100px;height: 100%;margin: 0 auto;}
+			header hgroup{margin-top:30px;float: left;}
+			#headList{float: right;margin-top: 50px;}
+			#headList li{float: left;position: relative;margin-left: 40px;}
+			#headList li .up{color: black;position: absolute;left: 0;top: 0;overflow: hidden;width: 0%;transition:1s width;}
+			#headList li:hover .up{width: 100%;}
+			#arrow{width: 21px;height: 11px;background: url(img/arrow.png) no-repeat;
+				   position: absolute;left: 50%;bottom: -11px;transition: .5s left;z-index: 2;
+			}
+			
+			
+			#content{position:relative;background: pink;overflow: hidden;width: 100%;}
+			#content .list{position: absolute;left: 0;top: 0;width: 100%;transition:1s top;}
+			#content .list > li{background-position:50% 0;position: relative;}
+			#content .list > li > section{width: 1100px;height: 520px; 
+						position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin: auto;
+			}
+			/*head end*/
+			
+			/*home start*/
+			#home{background: url(img/bg1.jpg) no-repeat;}
+			#home .home1{height: 100%;position:relative;perspective: 800px;transform-style: preserve-3d;}
+			#home .home1 li{ width:100%; height:100%; position:absolute; left:0; top:0;
+							 text-align: center;visibility:hidden;
+						   }
+			#home .home1 li > div{ color:white; text-align:center; padding-top:200px;}
+			#home .home1 li:nth-of-type(1){background:#dc6c5f;}
+			#home .home1 li:nth-of-type(2){background:#95dc84;}
+			#home .home1 li:nth-of-type(3){background:#64b9d2;}
+			#home .home1 li:nth-of-type(4){background:#000000;}
+			#home .home1 li.active{visibility:visible;}
+			
+			#home .home2{ position:absolute; bottom:0;  text-align:center; width:100%;}
+			#home .home2 li{ width:20px; height:20px; border-radius:50%; 
+								background:rgba(255,255,255,0.5); display:inline-block; 
+								margin:2px; box-shadow:0 0 4px rgba(25,25,25,0.8); cursor:pointer;}
+			#home .home2 li.active{ background:white; cursor:default;}
+			
+			#home .home1 li.rightShow{animation: rs 1s ;visibility: visible;}
+			#home .home1 li.leftHide{animation: lh 1s ;visibility: hidden;}
+			
+			#home .home1 li.leftShow{animation: ls 1s ;visibility: visible;}
+			#home .home1 li.rightHide{animation: rh 1s ;visibility: hidden;}
+			
+			@keyframes rs{
+				0%{transform: translateZ(-200px);visibility: hidden;}
+				40%{transform: translate(40%,0) rotateY(-20deg) scale(.8);}
+				100%{transform: translateZ(0px);}
+			}
+			@keyframes lh{
+				0%{transform: translateZ(0px);visibility: visible;}
+				40%{transform: translate(-40%,0) rotateY(20deg) scale(.8);}
+				100%{transform: translateZ(-200px);}
+			}
+			
+			@keyframes ls{
+				0%{transform: translateZ(-200px);visibility: hidden;}
+				40%{transform: translate(-40%,0) rotateY(20deg) scale(.8);}
+				100%{transform: translateZ(0px);}
+			}
+			@keyframes rh{
+				0%{transform: translateZ(0px);visibility: visible;}
+				40%{transform: translate(40%,0) rotateY(-20deg) scale(.8);}
+				100%{transform: translateZ(-200px);}
+			}
+			/*home end*/
+			
+			/*works start*/
+			#works{background: url(img/bg3.jpg) no-repeat;}
+			#works .works1{padding:50px 0 100px 50px;}
+			#works .works2{padding-left:50px;}
+			#works .works2 .item{position:relative;width:220px; height:133px; margin:0 1px;float:left;overflow: hidden;}
+			#works .works2 .item:last-of-type{ width:332px;}
+			#works .works2 .item .mask{ width:100%; height:100%; position:absolute; left:0; top:0; 
+										background:rgba(25,25,25,0.8); color:white; padding:15px; 
+										box-sizing:border-box; opacity:0; transition:.5s;}
+			#works .works2 .item .mask div{ width:32px; height:34px; 
+										background:url(img/zoomico.png) no-repeat; 
+										margin:10px auto; cursor:pointer; transition:.5s;}
+			#works .works2 .item .mask div:hover{ background-position:0 -36px;}
+			#works .works2 .item:hover .mask{ opacity:1;}
+			#works .works2 .item:hover > img{ transform:scale(1.5) rotate(20deg);}
+			#works .works2 .item > img{ transition:.5s;}
+			#works .works3{ width:167px; height:191px; background:url(img/robot.png) no-repeat; 
+							position:absolute; left:900px; top:170px; 
+							animation:works3Move 10s linear infinite ; }
+			@keyframes works3Move{
+				0%{transform: rotateY(0);}
+				49%{transform: rotateY(0);}
+				50%{left: 450px;transform: rotateY(180deg);}
+				100%{transform: rotateY(180deg);}
+			}
+
+			/*works end*/
+			
+			
+			/*course end*/
+			#course{ background:url(img/bg3.jpg) no-repeat;}
+			#course .course1{ padding:50px; position:relative; z-index:1;}
+			#course .course2{ width:400px; padding-left:50px; position:relative; z-index:1;color: white;}
+			#course .course3{ width:480px; position:absolute; right:50px; top:70px; z-index:1;}
+			#course .line{ width:9px; height:410px; background:url(img/plus_row.png) no-repeat; position:absolute; left:0; top:0; margin-top:-5px; margin-left:-5px;}
+			#course .pic{ width:120px; height:132px; float:left; margin-top:1px; position:relative; cursor:pointer; perspective:800px; -webkit-perspective:800px;}
+			#course .pic1{ width:100%; height:100%; position:absolute; left:0; top:0; background-repeat:no-repeat; background-position:center center;  backface-visibility:hidden; -webkit-backface-visibility:hidden; transition:1s;}
+			#course .pic2{ width:100%; height:100%; position:absolute; left:0; top:0; background:#009ee0; color:white; padding:15px; box-sizing:border-box; text-indent:2em; transform:rotateY(-180deg); -webkit-transform:rotateY(-180deg); backface-visibility:hidden;  -webkit-backface-visibility:hidden; transition:1s;}
+			#course .pic:hover .pic1{ transform:rotateY(-180deg); -webkit-transform:rotateY(-180deg);}
+			#course .pic:hover .pic2{ transform:rotateY(0deg); -webkit-transform:rotateY(0deg);}
+			#course .line:nth-child(1){left: 0px;}
+			#course .line:nth-child(2){left: 120px;}
+			#course .line:nth-child(3){left: 240px;}
+			#course .line:nth-child(4){left: 360px;}
+			#course .line:nth-child(5){left: 480px;}
+			
+			#course .pic:nth-of-type(1) .pic1{background-image:url(img/binoli.png);}
+			#course .pic:nth-of-type(2) .pic1{background-image:url(img/bks.png);}
+			#course .pic:nth-of-type(3) .pic1{background-image:url(img/gu.png);}
+			#course .pic:nth-of-type(4) .pic1{background-image:url(img/hlx.png);}
+			#course .pic:nth-of-type(5) .pic1{background-image:url(img/binoli.png);}
+			#course .pic:nth-of-type(6) .pic1{background-image:url(img/bks.png);}
+			#course .pic:nth-of-type(7) .pic1{background-image:url(img/binoli.png);}
+			#course .pic:nth-of-type(8) .pic1{background-image:url(img/bks.png);}
+			#course .pic:nth-of-type(9) .pic1{background-image:url(img/bks.png);}
+			#course .pic:nth-of-type(10) .pic1{background-image:url(img/bks.png);}
+			#course .pic:nth-of-type(11) .pic1{background-image:url(img/bks.png);}
+			#course .pic:nth-of-type(12) .pic1{background-image:url(img/binoli.png);}
+			/*course end*/
+			
+			
+			
+			/*about start*/
+			#about{background: url(img/bg4.jpg) no-repeat;}
+			#about .about1{padding: 50px 0 100px 50px;}
+			#about .about2{width: 400px;margin-left: 50px;}
+			#about .about3 .about3Img{width: 260px;height: 200px;border: 5px solid rgba(255,255,255,0.5);
+									border-radius:8px;overflow: hidden;z-index:3;
+									}
+			#about .about3 .about3Img:nth-child(1){position: absolute;left: 750px;top: 50px;}
+			#about .about3 .about3Img:nth-child(2){position: absolute;left: 600px;top: 290px;}
+			#about .about3 .about3Img ul{position: absolute;left: 0;top: 0;width: 100%;height: 100%;z-index: 5;}
+			#about .about3 .about3Img ul > li{overflow: hidden;float: left;position: relative;}
+			#about .about3 .about3Img ul > li > img{position: absolute;transition:.5s;}
+			#about .about3 .about3Img span{position: absolute;left: 0;top: 0;width: 100%;height: 100%;
+									transform: scale(1.5);transition:1s ;
+									}
+			#about .about3 .about3Img:nth-child(1) > span{background: url(img/about2.jpg) no-repeat;}
+			#about .about3 .about3Img:nth-child(2) > span{background: url(img/about4.jpg) no-repeat;}
+			#about .line{ width:357px; height:998px; background:url(img/greenLine.png) no-repeat; 
+								position:absolute; left:50%; top:0;
+							}
+			
+			/*about end*/
+			
+			/*team start*/
+			#team{background: url(img/bg5.jpg) no-repeat;}
+			#team .team1{float: left; width: 400px; padding: 50px;}
+			#team .team2{float: right; width: 400px; padding: 50px;}
+			#team .team3 {width: 994px;height:448px;position: absolute;bottom: -150px;left: 50%;margin-left: -472px;}
+			#team .team3 .list li{float: left;width: 118px;height: 448px;background: url(img/team.png) no-repeat;}
+			#team .team3 .list li:nth-child(1){}
+			#team .team3 .list li:nth-child(2){background-position: -118px 0;}
+			#team .team3 .list li:nth-child(3){background-position: -236px 0;}
+			#team .team3 .list li:nth-child(4){background-position: -354px 0;}
+			#team .team3 .list li:nth-child(5){background-position: -472px 0;}
+			#team .team3 .list li:nth-child(6){background-position: -590px 0;}
+			#team .team3 .list li:nth-child(7){background-position: -708px 0;}
+			#team .team3 .list li:nth-child(8){background-position: -826px 0;}
+			#bubble{position: absolute;left:0; bottom:130px; cursor:pointer;}
+			/*team end*/
+			
+			
+			/*others start*/
+			#content .menu {position: fixed;top: 50%;right: 10px;z-index: 20;}
+			#content .menu li{width: 10px;height: 10px;margin-bottom: 10px;border-radius: 50%;border: 1px solid whitesmoke;}
+			#content .menu li.active{background: white;}
+			/*others end*/
+		</style>
+	</head>
+	<body>
+		<section id="main">
+			<header id="head">
+				<div id="headMian">
+					<hgroup>
+						<h1 id="logo">
+							<a href="http://www.atguigu.com">
+								<img src="img/logo.png"/>
+							</a>
+						</h1>
+						<h2 class="subhead">这是一个H5 CSS3站点</h2>
+					</hgroup>
+					<ul id="headList">
+						<li>
+							<a href="javascript:;">
+								<div class="up"><img src="img/home_b.png"/></div>
+								<div ><img src="img/home.png"/></div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:;">
+								<div class="up">Course</div>
+								<div >Course</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:;">
+								<div class="up">Works</div>
+								<div >Works</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:;">
+								<div class="up">About</div>
+								<div >About</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:;">
+								<div class="up">Team</div>
+								<div >Team</div>
+							</a>
+						</li>
+					</ul>
+					<div id="arrow"></div>
+				</div>
+			</header>
+			<section id="content">
+				 <ul class="menu">
+				 	<li class="active"></li>
+				 	<li></li>
+				 	<li></li>
+				 	<li></li>
+				 	<li></li>
+				 </ul>
+				 <ul  class="list">
+		        	<li id="home">
+		            	<section>
+		            		<ul class="home1">
+		            			<li class="active leftShow">
+		            				<div class="commonTitle">one layer</div>
+		            			</li>
+		            			<li class="rightHide">
+		            				<div class="commonTitle">two layer</div>
+		            			</li>
+		            			<li>
+		            				<div class="commonTitle">three layer</div>
+		            			</li>
+		            			<li>
+		            				<div class="commonTitle">four layer</div>
+		            			</li>
+		            		</ul>
+		            		<ul class="home2">
+		            			<li class="active"></li>
+		            			<li></li>
+		            			<li></li>
+		            			<li></li>
+		            		</ul>
+		            	</section>
+		            </li>
+		            <li id="course">
+		            	<section>
+		            		<header class="course1">
+		            			<h1 class="commonTitle">
+			            			<span>EINIGE</span><br />
+			            			<span>UNSERER</span><br />
+			            			<span>KUNDEN</span><br />
+		            			</h1>
+		            		</header>
+		            		<div class="course2">
+		            			<p>Das Kundenvertrauen in unsere Kompetenz ist die notwendige Basis einer erfolgreichen Zusammenarbeit, gleichzeitig aber auch das größte Lob, das man uns entgegenbringen kann.</br>
+		            			Diese und viele weitere große und kleine Kunden vertrauen uns seit Jahren, was uns stolz macht, und dafür sagen wir an dieser Stelle einfach mal.</p>
+		            		</div>
+		            		<div class="course3">
+		            			<span class="line"></span>
+		            			<span class="line"></span>
+		            			<span class="line"></span>
+		            			<span class="line"></span>
+		            			<span class="line"></span>
+		            			<div class="pic">
+		            				<div class="pic1"></div>
+		            				<div class="pic2">测试文字</div>
+		            			</div>
+		            			<div class="pic">
+		            				<div class="pic1"></div>
+		            				<div class="pic2">测试文字</div>
+		            			</div>
+		            			<div class="pic">
+		            				<div class="pic1"></div>
+		            				<div class="pic2">测试文字</div>
+		            			</div>
+		            			<div class="pic">
+		            				<div class="pic1"></div>
+		            				<div class="pic2">测试文字</div>
+		            			</div>
+		            			<div class="pic">
+		            				<div class="pic1"></div>
+		            				<div class="pic2">测试文字</div>
+		            			</div>
+		            			<div class="pic">
+		            				<div class="pic1"></div>
+		            				<div class="pic2">测试文字</div>
+		            			</div>
+		            			<div class="pic">
+		            				<div class="pic1"></div>
+		            				<div class="pic2">测试文字</div>
+		            			</div>
+		            			<div class="pic">
+		            				<div class="pic1"></div>
+		            				<div class="pic2">测试文字</div>
+		            			</div>
+		            			<div class="pic">
+		            				<div class="pic1"></div>
+		            				<div class="pic2">测试文字</div>
+		            			</div>
+		            			<div class="pic">
+		            				<div class="pic1"></div>
+		            				<div class="pic2">测试文字</div>
+		            			</div>
+		            			<div class="pic">
+		            				<div class="pic1"></div>
+		            				<div class="pic2">测试文字</div>
+		            			</div>
+		            			<div class="pic">
+		            				<div class="pic1"></div>
+		            				<div class="pic2">测试文字</div>
+		            			</div>
+		            		</div>
+		            	</section>
+		            </li>
+		            <li id="works">
+		            	<section>
+		            		<header class="works1">
+		            			<h1 class="commonTitle">
+		            				<span>EINBLICK</span><br />
+		            				<span>ERKENNTNIS</span><br />
+		            				<span>ERGEBNIS</span><br />
+		            			</h1>
+		            		</header>
+		            		<div class="works2">
+		            			<div class="item">
+		            				<img src="img/worksimg1.jpg"/>
+		            				<div class="mask">
+		            					<span>我有一套小毛驴</span>
+		            					<div></div>
+		            				</div>
+		            			</div>
+		            			<div class="item">
+		            				<img src="img/worksimg2.jpg"/>
+		            				<div class="mask">
+		            					<span>我从来都不骑</span>
+		            					<div></div>
+		            				</div>
+		            			</div>
+		            			<div class="item">
+		            				<img src="img/worksimg3.jpg"/>
+		            				<div class="mask">
+		            					<span>突然一天，我骑它去赶集</span>
+		            					<div></div>
+		            				</div>
+		            			</div>
+		            			<div class="item">
+		            				<img src="img/worksimg4.jpg"/>
+		            				<div class="mask">
+		            					<span>啦啦啦啦啦啦啦啦啦啦啦</span>
+		            					<div></div>
+		            				</div>
+		            			</div>
+		            		</div>
+		            		<div class="works3"></div>
+		            	</section>
+		            </li>
+		            <li id="about">
+		            	<section>
+		            		<header class="about1">
+		            			<h1 class="commonTitle">
+		            				<span>DIE</span><br />
+		            				<span>SPEZIELLE</span><br />
+		            				<span>VIELFALT</span><br />
+		            			</h1>
+		            		</header>
+		            		<div class="about2">
+		            			<p class="commonText">Der bunte Medienmix ist die Faszination die uns antreibt und das, was man an uns schätzt. Von A bis Z und von vorne bis hinten nehmen wir Ihr Projekt unter unsere Fittiche und lassen es zu etwas Großartigem heranwachsen.</p>
+		            		</div>
+		            		<div class="about3">
+		            			<div class="about3Img">
+		            				<ul data-src="img/about1.jpg"></ul>
+		            				<span></span>
+		            			</div>
+		            			<div class="about3Img">
+		            				<ul data-src="img/about3.jpg"></ul>
+		            				<span></span>
+		            			</div>
+		            		</div>
+		            		<div class="line"></div>
+		            	</section>
+		            </li>
+		            <li id="team">
+		            	<section>
+		            		<header class="team1">
+		            			<h1 class="commonTitle">
+		            				<span>WIR SIND</span><br />
+		            				<span>VOXELAIR</span>
+		            			</h1>
+		            		</header>
+		            		<div class="team2">
+		            			<p class="commonText">
+		            				Wir sind seit 2002 eine Full-Service-Werbeagentur mit Stammsitz in Heimsheim, zwischen Stuttgart und Karlsruhe. 
+		            				<br />
+		            				Über 60 Jahre Erfahrung vereinen das gesamte VoxelAir-Team. Dabei hat jedes Voxel neben professionellem Allroundwissen auch sein ganz spezielles Gebiet, um selbst die individuellsten Kundenwünsche schnell und kompetent umzusetzen.
+		            			</p>
+		            		</div>
+		            		<div class="team3">
+		            			<ul class="list">
+		            				<li></li>
+		            				<li></li>
+		            				<li></li>
+		            				<li></li>
+		            				<li></li>
+		            				<li></li>
+		            				<li></li>
+		            				<li></li>
+		            			</ul>
+		            		</div>
+		            	</section>
+		            </li>
+		        </ul>
+			</section>
+		</section>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var head = document.querySelector("#head");
+			var liNodes = document.querySelectorAll("#headList li");
+			var upNodes = document.querySelectorAll("#headList li .up");
+			var firstUp = liNodes[0].querySelector(".up");
+			var arrow = document.querySelector("#arrow");
+			
+			var content = document.querySelector("#content");
+			var cList = document.querySelector("#content .list");
+			var cLiNodes = document.querySelectorAll("#content .list > li");
+			
+			var homeNode = document.querySelector("#home");
+			var h1List = document.querySelectorAll("#home .home1 > li");
+			var h2List = document.querySelectorAll("#home .home2 > li");
+			
+			var aboutNode = document.querySelector("#about");
+			var about3 = document.querySelector("#about .about3");
+			var about3Img = document.querySelector("#about .about3 .about3Img");
+			var aboutUlNodes = document.querySelectorAll("#about .about3 .about3Img > ul");
+			var aboutSpanNode = document.querySelectorAll("#about .about3 .about3Img > span");
+//			var aboutLiNodes = document.querySelectorAll("#about .about3 .about3Img > ul > li");
+//			var aboutImgNodes = document.querySelectorAll("#about .about3 .about3Img > ul > li > img");
+			
+			var teamLiNodes = document.querySelectorAll("#team .team3 .list li");
+			var team3Node = document.querySelector("#team .team3");
+			
+			var menuLiNodes = document.querySelectorAll("#content .menu > li");
+			
+			var nowIndex=0;
+			var oldIndex=0;
+			var now =0;
+			var timer =0;
+			
+			window.onresize = fnResize;
+			function fnResize(){
+				contentAuto();
+			}
+			
+			//第五屏交互效果
+			team();
+			function team(){
+				var w = teamLiNodes[0].offsetWidth;
+				var h = 280;
+				var oc=null;
+				var timer1 = null;
+				var timer2 = null;
+				
+				team3Node.onmouseleave = function(){
+					removeCanvas();
+					for(var i=0;i<teamLiNodes.length;i++){
+						teamLiNodes[i].style.opacity = 1;
+					}
+				};
+				
+				
+				for(var i=0;i<teamLiNodes.length;i++){
+					teamLiNodes[i].index = i;
+					teamLiNodes[i].onmouseover=function(){
+						addCanvas();
+						oc.style.left = this.index*w+"px";
+						for(var i=0;i<teamLiNodes.length;i++){
+							teamLiNodes[i].style.opacity = 0.5;
+						}
+						this.style.opacity = 1;
+					};
+//					teamLiNodes[i].onmouseleave=function(){
+//						removeCanvas();
+//						for(var i=0;i<teamLiNodes.length;i++){
+//							teamLiNodes[i].style.opacity = 1;
+//						}
+//					};
+				}
+				
+				function removeCanvas(){
+					clearInterval(timer1);
+					clearInterval(timer2);
+					team3Node.removeChild(oc);
+					oc = null;
+				}
+				
+				function addCanvas(){
+					if(!oc){
+						oc = document.createElement("canvas");
+						oc.id = 'bubble';
+						oc.width = w;
+						oc.height = h;
+						team3Node.appendChild(oc);
+						bindCanvas();
+					}
+				}
+				
+				function bindCanvas(){
+					var oGC = oc.getContext('2d');
+					var setArr = [];   //存储要绘制的所有图形的数据
+					timer1 = setInterval(function(){
+						oGC.clearRect(0,0,oc.width,oc.height);
+						for(var i=0;i<setArr.length;i++){
+							setArr[i].num += 5;
+							setArr[i].x = setArr[i].startX + Math.sin(setArr[i].num*Math.PI/180)*setArr[i].step;
+							setArr[i].y = setArr[i].startY - (setArr[i].num*Math.PI/180)*setArr[i].step;
+							if( setArr[i].y < 50 ){
+								setArr.splice(i,1);
+							}
+						}
+						
+						for(var i=0;i<setArr.length;i++){
+							oGC.fillStyle = 'rgba('+setArr[i].c1+','+setArr[i].c2+','+setArr[i].c3+','+setArr[i].c4+')';
+							oGC.beginPath();
+								oGC.arc(setArr[i].x,setArr[i].y,setArr[i].r,0,360*Math.PI/180);
+							oGC.closePath();
+							oGC.fill();
+						}
+						
+					},1000/60);
+					
+					timer2 = setInterval(function(){
+						var x = Math.random()*oc.width;
+						var y = oc.height - 10;
+						var r = Math.random()*6 + 2;
+						var c1 = Math.round(Math.random()*255);
+						var c2 = Math.round(Math.random()*255);
+						var c3 = Math.round(Math.random()*255);
+						var c4 = 1;
+						var num = 0;
+						var step = Math.random()*20 + 10;
+						var startX = x;
+						var startY = y;
+						
+						setArr.push({
+							x : x,
+							y : y,
+							r : r,
+							c1 : c1,
+							c2 : c2,
+							c3 : c3,
+							c4 : c4,
+							num : num,
+							step : step,
+							startX : x,
+							startY : y
+						});
+						
+					},100);
+				}
+			}
+			
+			//第四屏交互效果
+			about();
+			function about(){
+				for(var i=0;i<aboutUlNodes.length;i++){
+					change(aboutUlNodes[i],aboutSpanNode[i]);
+				}
+				
+				function change(ul,span){
+					var w = ul.offsetWidth/2;
+					var h = ul.offsetHeight/2;
+					var src = ul.dataset.src;
+					
+					for(var i=0;i<4;i++){
+						var liNode = document.createElement("li");
+						var img = document.createElement("img");
+						
+						/*
+						img偏移量:
+							0: left为0 top为0
+							1: left为-w top为0
+							2: left为0 top为-h
+							3: left为-w top为-h
+						*/
+						liNode.style.width=w+"px";
+						liNode.style.height=h+"px";
+						img.src=src;
+						img.style.left=-i%2*w +"px";
+						img.style.top= -Math.floor(i/2)*h +"px";
+						
+						liNode.appendChild(img);
+						ul.appendChild(liNode);
+					}
+				
+					var aboutImgNodes = ul.querySelectorAll("li > img");
+					
+					
+					ul.onmouseover=function(){
+	//					for(var i=0;i<aboutImgNodes.length;i++){
+	//						aboutImgNodes[i].style
+	//					}
+						aboutImgNodes[0].style.top = h+"px";
+						aboutImgNodes[1].style.left = -2*w+"px";
+						aboutImgNodes[2].style.left = w+"px";
+						aboutImgNodes[3].style.top =  -2*h+"px";
+						
+						span.style.transform = "scale(1)";
+					}
+					ul.onmouseout=function(){
+						
+						aboutImgNodes[0].style.top = "0px";
+						aboutImgNodes[1].style.left = -w+"px";
+						aboutImgNodes[2].style.left = "0px";
+						aboutImgNodes[3].style.top =  -h+"px";
+						
+						span.style.transform = "scale(1.5)";
+					}
+				}
+				
+
+			}
+			
+			//3d轮播
+			home();
+			function home(){
+				for(var i=0;i<h2List.length;i++){
+					
+					h2List[i].index = i;
+					
+					h2List[i].onclick=function(){
+						for(var i=0;i<h2List.length;i++){
+							h2List[i].className="";
+						}
+						this.className="active";
+						
+						if(oldIndex<this.index){ //左--->右
+							h1List[this.index].className="rightShow";
+							h1List[oldIndex].className="leftHide";
+						}else if(oldIndex>this.index){//右--->左
+							h1List[this.index].className="leftShow";
+							h1List[oldIndex].className="rightHide";
+						}
+						oldIndex = this.index;
+						nowIndex = this.index;
+					}
+				}
+				
+				
+				var timer = setInterval(function(){
+					change();
+				},3000);
+				
+				function change(){
+					nowIndex++;
+					if(nowIndex == h2List.length){
+						nowIndex = 0;
+					}
+					
+					for(var i=0;i<h2List.length;i++){
+						h2List[i].className="";
+					}
+					h2List[nowIndex].className="active";
+					
+					h1List[nowIndex].className="rightShow";
+					h1List[oldIndex].className="leftHide";
+					
+					oldIndex = nowIndex;
+				}
+			
+				homeNode.addEventListener("mouseover",function(){
+					clearInterval(timer);
+				})
+			}
+			
+			//滚轮事件控制
+			content.onmousewheel =function (ev){
+				var ev = ev || window.event;
+				clearTimeout(timer);
+				timer = setTimeout(function(){
+					fn(ev);
+				},200);
+			}
+			if(content.addEventListener){
+				content.addEventListener("DOMMouseScroll",function(ev){
+					var ev = ev || window.event;
+					clearTimeout(timer);
+					timer = setTimeout(function(){
+						fn(ev);
+					},200);
+				},false);
+			}
+			function fn(ev){
+				var flag ="";
+				if(ev.wheelDelta){
+					flag = ev.wheelDelta>0?"up":"down";
+				}else if(ev.detail){
+					flag = ev.detail<0?"up":"down";
+				}
+				
+				switch (flag){
+					case "up":
+						if(now != 0){
+							now--;
+						}
+						move(now);
+						break;
+					case "down":
+						if(now != cLiNodes.length-1){
+							now++;
+						}
+						move(now);
+						break;
+				}
+				
+				if(ev.preventDefault){
+					ev.preventDefault();
+				}
+				
+				return false;
+			}
+			
+			//内容区逻辑的控制
+			contentAuto();
+			function contentAuto(){
+				var height =document.documentElement.clientHeight - head.offsetHeight;
+				content.style.height = height+"px";
+				for(var i=0;i<cLiNodes.length;i++){
+					cLiNodes[i].style.height = height+"px";
+				}
+				cList.style.top = - now * height + 'px';
+			}
+			
+			//导航逻辑
+			bindNav();
+			function bindNav(){
+				firstUp.style.width = "100%";
+				arrow.style.left= liNodes[0].offsetLeft + liNodes[0].offsetWidth/2 - arrow.offsetWidth/2  +"px";
+			
+				for(var i=0;i<liNodes.length;i++){
+					liNodes[i].index =i;
+					liNodes[i].onmousedown=function(){
+						move(this.index);
+						now=this.index;
+					}
+				}
+				for(var i=0;i<menuLiNodes.length;i++){
+					menuLiNodes[i].index =i;
+					menuLiNodes[i].onmousedown=function(){
+						move(this.index);
+						now=this.index;
+					}
+				}
+			}
+			
+//			move(4);
+			function move(index){
+				for(var i=0;i<upNodes.length;i++){
+					upNodes[i].style.width="";//注意一定要设置为空
+				}
+				upNodes[index].style.width="100%";
+				arrow.style.left= liNodes[index].offsetLeft + liNodes[index].offsetWidth/2 - arrow.offsetWidth/2  +"px";
+			
+				for(var i=0;i<menuLiNodes.length;i++){
+					menuLiNodes[i].className="";
+				}
+				menuLiNodes[index].className="active";
+			
+			
+				var height =document.documentElement.clientHeight - head.offsetHeight;
+				cList.style.top = - index * height + 'px';
+			}
+			
+			
+		}
+	</script>
+</html>

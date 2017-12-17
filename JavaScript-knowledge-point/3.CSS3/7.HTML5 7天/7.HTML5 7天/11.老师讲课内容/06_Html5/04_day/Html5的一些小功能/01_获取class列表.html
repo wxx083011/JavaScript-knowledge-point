@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1" class="xfz1 xfz2 xfz3">div</div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDiv = document.getElementById('div1');
+			
+			console.log(oDiv.classList);
+			oDiv.classList.add('box4');
+			oDiv.classList.add('box5');
+			oDiv.classList.remove('box5');
+			oDiv.classList.toggle('box4');
+			
+			
+			/*
+				add( String )
+					添加指定的类值。如果这些类已经存在于元素的属性中，那么它们将被忽略。
+				remove( String )
+					删除指定的类值。
+				toggle ( String )
+					切换 class value; 即如果类存在，则删除它并返回false，如果不存在，则添加它并返回true。
+			*/
+			
+			//alert( oDiv.classList );  //类数组
+			
+			//alert( oDiv.classList.length );  //3
+			
+			//oDiv.classList.add('box4');
+			
+			//oDiv.classList.remove('box2');
+			
+			//oDiv.classList.toggle('box2');
+		}
+	</script>
+</html>

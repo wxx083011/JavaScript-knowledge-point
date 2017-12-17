@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#test{
+				width: 200px;
+				height: 200px;
+				background: pink;
+			}
+		</style>
+	</head>
+	<body style="height: 3000px;">
+		<div id="test"></div>
+	</body>
+	<script type="text/javascript">
+		var testNode = document.getElementById("test");
+		testNode.onmousewheel =fn;
+		
+		if(testNode.addEventListener){
+			testNode.addEventListener("DOMMouseScroll",fn)
+		}
+		
+		
+		function fn(ev){
+			var ev = ev||event;
+			var flag ="";
+			if(ev.wheelDelta){
+				flag = ev.wheelDelta>0?"up":"down";
+			}else if(ev.detail){
+				flag = ev.detail<0?"up":"down";
+			}
+			
+			switch (flag){
+				case "up":
+					this.style.height = this.offsetHeight -10+"px";
+					break;
+				case "down":
+					this.style.height = this.offsetHeight +10+"px";
+					break;
+			}
+			
+			if(ev.preventDefault){
+				ev.preventDefault();
+			}
+			
+			return false;
+		}
+		
+	</script>
+</html>

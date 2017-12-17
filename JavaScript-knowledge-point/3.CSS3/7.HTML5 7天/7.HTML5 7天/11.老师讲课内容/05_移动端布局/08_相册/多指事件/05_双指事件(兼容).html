@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 200px;
+			height: 200px;
+			background: pink;
+			margin: 100px auto;
+			font-size: 20px;
+			color: #fff;
+		}
+	</style>
+	<script type="text/javascript" src="js/transform.js"></script>
+	<script type="text/javascript">
+		document.addEventListener("touchstart",
+			function(e){
+				e.preventDefault();
+			}
+		)
+		window.onload = function() {
+			var box = document.querySelector("#box");
+			var callback={
+				start:function(){
+					box.style.background="gray";
+				},
+				change:function(){
+					box.innerHTML+="1<br />";
+				},
+				end:function(){
+					box.style.background="pink";
+					box.innerHTML="";
+				}
+			};
+			
+			gesture(box,callback);
+			
+			function gesture(el,callback){
+				var isGesture = false;
+				el.addEventListener("touchstart",function(ev){
+					if(ev.touches.length>=2){
+						isGesture =true;
+						if(callback&&callback.start){
+							callback.start();
+						}
+					}
+				})
+				
+				el.addEventListener("touchmove",function(ev){
+					if(ev.touches.length >= 2 && isGesture){
+						if(callback&&callback.change){
+							callback.change();
+						}
+					}
+				})
+				
+				el.addEventListener("touchend",function(ev){
+					if(isGesture){
+						if(callback&&callback.end){
+							callback.end();
+						}
+					}
+					isGesture = false;
+				})
+				
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

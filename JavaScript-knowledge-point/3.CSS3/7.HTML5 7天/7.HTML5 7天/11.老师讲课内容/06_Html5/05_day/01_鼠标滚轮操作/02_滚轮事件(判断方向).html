@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#test{
+				width: 200px;
+				height: 200px;
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test"></div>
+	</body>
+	<script type="text/javascript">
+		
+//		ie/chrome : onmousewheel(dom0)
+//				event.wheelDelta
+//					上：120
+//					下：-120
+//				
+//		firefox : DOMMouseScroll 必须用(dom2的标准模式)
+//				event.detail
+//					上：-3
+//					下：3
+
+		var testNode = document.getElementById("test");
+		testNode.onmousewheel =fn;
+		
+		if(testNode.addEventListener){
+			testNode.addEventListener("DOMMouseScroll",fn)
+		}
+		
+		
+		function fn(ev){
+			var ev = ev||event;
+			var flag ="";
+			if(ev.wheelDelta){
+				flag = ev.wheelDelta>0?"up":"down";
+			}else if(ev.detail){
+				flag = ev.detail<0?"up":"down";
+			}
+			
+			console.log(flag);
+		}
+		
+	</script>
+</html>

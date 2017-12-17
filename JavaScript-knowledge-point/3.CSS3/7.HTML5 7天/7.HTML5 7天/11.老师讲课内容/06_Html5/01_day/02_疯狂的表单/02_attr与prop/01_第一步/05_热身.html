@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--
+		浏览器在渲染checkedbox时,会跟据property属性来确定勾选状态
+		
+		以后的每一次在浏览器端的勾选操作改变的都是property
+		
+		监控一下:
+				oCheck1.checked;
+				oCheck1.attributes.checked.nodeValue;	
+		-->
+	</head>
+	<body>
+		<input type="checkbox" id="test" />test
+		
+		<input type="button" value="测试" id="btn1" />
+	</body>
+	
+
+	<script>
+		var oCheck1 =document.getElementById("test");
+		var btnEle =document.getElementById("btn1");
+		btnEle.onclick=function(){
+			oCheck1.checked=true;
+		}
+		oCheck1.onclick=function(){
+			console.log(oCheck1.checked);
+		}
+	</script>
+</html>

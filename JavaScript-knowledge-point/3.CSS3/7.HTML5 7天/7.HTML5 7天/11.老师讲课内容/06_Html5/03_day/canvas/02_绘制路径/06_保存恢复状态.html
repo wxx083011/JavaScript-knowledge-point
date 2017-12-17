@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#test{
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				background:gray;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="500" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var testNode =document.getElementById("test");
+			if(testNode.getContext){
+				var ctx = testNode.getContext("2d");
+				
+				ctx.save();
+				ctx.fillStyle="pink";
+				ctx.beginPath();
+			    ctx.rect(2,2,100,100);
+			    ctx.fill();
+			    
+			    ctx.save();
+			    ctx.fillStyle="deeppink";
+			    
+			    ctx.save();
+			    ctx.restore();
+			    ctx.beginPath();
+			    ctx.rect(200,200,100,100);
+			    ctx.fill();
+			    
+			}
+		}
+	</script>
+</html>

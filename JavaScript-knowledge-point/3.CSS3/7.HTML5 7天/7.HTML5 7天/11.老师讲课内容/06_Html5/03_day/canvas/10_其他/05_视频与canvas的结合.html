@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<video id="video" width="400" height="400" controls >
+			<source src="media/OUTPUT.mp4" type="video/mp4"></source>
+			当前浏览器不支持 video直接播放，点击这里下载视频： <a href="media/OUTPUT.mp4">下载视频</a>
+		</video>
+		<canvas id="canvas"></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var video = document.querySelector("#video");
+			var canvas =document.querySelector("#canvas");
+			
+			canvas.width = video.videoWidth;
+			canvas.height = video.videoHeight;
+			
+			
+			
+			if(canvas.getContext){
+				var ctx = canvas.getContext("2d");
+				ctx.scale(.5,.5)
+				setInterval(function(){
+					ctx.drawImage(video,0,0);
+				},100)
+			}
+		}
+	</script>
+</html>

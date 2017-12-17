@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+		<title></title>
+		<style type="text/css">
+			@keyframes move{
+				from{
+					top: 0;
+				}
+				to{
+					top: 10px;
+				}
+			}
+		
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+			}
+			#wrap{
+				height: 100%;
+				background: gray;
+				text-align: center;
+			}
+			#inner{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate3d(-50%,-50%,0);
+			}
+			#wrap span{
+				position: relative;
+				font-size: 20px;
+				/*animation: move .5s linear infinite alternate-reverse;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="inner">
+				<span>L</span>
+				<span>o</span>
+				<span>a</span>
+				<span>d</span>
+				<span>i</span>
+				<span>n</span>
+				<span>g</span>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		document.addEventListener("touchstart",function(ev){
+			ev=ev||event;
+			ev.preventDefault();
+		})
+		
+		window.onload=function(){
+			var spans = document.querySelectorAll("#inner span");
+			var arr=["red","yellow","pink","deeppink","green","blue","black"]
+			for(var i=0;i<spans.length;i++){
+				spans[i].style.color=arr[i];
+				spans[i].style.animation="move .2s "+i*0.08+"s linear infinite alternate";
+			}
+		}
+	</script>
+</html>

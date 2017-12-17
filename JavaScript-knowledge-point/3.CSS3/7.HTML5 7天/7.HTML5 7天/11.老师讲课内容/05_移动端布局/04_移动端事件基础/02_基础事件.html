@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>02_基础事件</title>
+<!--	
+	(DOM0)1.obj.onclick = fn;	
+		
+	(DOM2)2.ie :obj.attachEvent(事件名称，事件函数);
+	       	标准:obj.addEventListener(事件名称，事件函数，是否捕获);
+	       	
+	touchstart 手指触摸 == mousedown 
+	touchend 手指抬起 == mouseup
+	touchmove 手指移动== mousmove
+		
+	touch事件  在 chrome的模拟器下，部分版本 通过on的方式来添加事件无效
+-->
+<style>
+.box {
+	width: 100px;
+	height: 100px;
+	background: red;
+}
+</style>
+<script>
+window.onload = function () {
+	var box = document.querySelector(".box");
+	/*box.ontouchstart=function(){
+		console.log("touchstart");
+	}*/
+	box.addEventListener("touchstart",function(ev){
+		ev.cancelable=false;
+	})
+	box.addEventListener("touchmove",function(){
+		console.log("touchmove");
+	})
+	box.addEventListener("touchend",function(){
+		console.log("touchend");
+	})
+};
+</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

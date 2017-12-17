@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test"></canvas>
+	</body>
+	<script type="text/javascript">
+		var testNode = document.querySelector("#test");
+		if (testNode.getContext) {
+		    var ctx = testNode.getContext('2d');
+		    ctx.fillRect(25,25,100,100);
+		    ctx.clearRect(45,45,60,60);
+		  }
+	</script>
+</html>

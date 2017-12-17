@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>音频</title>
+		<!--
+			最简单的情况下，src属性直接指向媒体文件就可以了
+		但是万一浏览器不支持相关容器或者编解码器呢?
+			这就需要备用声明了，备用声明可以包含多种来源，浏览器
+		可以自行从中选择
+			浏览器还可以根据source中的type属性来决定是否需要尝试播放
+		-->
+	</head>
+	<body>
+		<video controls="controls" width="300" height="300">
+			<source src="media/sp/OUTPUT.webm" type='video/webm; codecs="vp8, vorbis"'></source>
+			<source src="media/sp/OUTPUT.ogv" type='video/ogg; codecs="theora, vorbis"'></source>
+			<source src="media/sp/OUTPUT.mp4"></source>
+		</video>
+		
+		<audio  controls>
+			<source src="media/yp/OUTPUT.ogg" type='audio/ogg; codecs="vorbis"'></source>
+			<source src="media/yp/OUTPUT.acc" type='audio/aac; codecs="aac"'></source>
+			<source src="media/yp/OUTPUT.mp3"></source>
+		</audio>
+	</body>
+</html>

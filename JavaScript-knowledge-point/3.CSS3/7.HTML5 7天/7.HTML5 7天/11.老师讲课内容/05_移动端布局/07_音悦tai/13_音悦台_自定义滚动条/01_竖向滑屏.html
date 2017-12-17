@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title>08_竖向滑屏</title>
+		<style type="text/css">
+			 *{
+			 	margin: 0;
+			 	padding: 0;
+			 }
+			 
+			 html,body{
+			 	height: 100%;
+			 	overflow: hidden;
+			 }
+			 
+			 #wrap{
+			 	position: relative;
+			 	height: 100%;
+			 	overflow: hidden;
+			 }
+		</style>
+		<script src="js/transform.js"></script>
+		<script>
+			document.addEventListener(
+				"touchstart",
+				function(e) {
+					e.preventDefault();
+				}
+			);
+		
+			window.onload=function(){
+				setTeYt();
+				var wrap = document.querySelector("#wrap");
+				scrollY(wrap)
+			}
+			
+			function setTeYt(){
+				var scroll = document.querySelector("#scroll");
+				var teYt ="";
+				for(var i=0;i<400;i++){
+					teYt+="nmYnmYnmYnmYnmYnmY-------"+i+"<br/>";
+				}
+				scroll.innerHTML = teYt;
+			}
+			
+			function scrollY(wrap){
+				var child = wrap.children[0];
+				css(child,"translateZ",0.001);
+				
+				var step = 0;
+				var stratY =0;
+				var elementY = 0;
+				var min = wrap.clientHeight - child.offsetHeight;
+				
+				var lastTime =0;
+				var lastPoint = 0;
+				var timeValue = 1;//时间差值,避免初始点击speed值为undefined
+				var disValue = 0;//距离的差值
+				
+				
+				wrap.addEventListener("touchstart",function(ev){
+					child.style.transition ="none";
+					
+					var touch = ev.changedTouches[0];
+					stratY = touch.clientY;
+					elementY = css(child,"translateY");
+					
+					lastTime=new Date().getTime();//毫秒数
+					lastPoint = stratY;
+					timeValue = 1;//时间差值,避免初始点击speed值为undefined
+					disValue = 0;//距离的差值
+				})
+				
+				wrap.addEventListener("touchmove",function(ev){
+					var touch = ev.changedTouches[0]; 
+					var nowY = touch.clientY;
+					var dis = nowY -stratY;
+					var translateY = elementY+dis;
+					
+					if(translateY>0){
+						step =0.6- translateY / (document.documentElement.clientHeight*3);
+						translateY=step*translateY;
+					}
+					if(translateY<min){
+						var overDis = min - translateY;
+						step =0.6 - overDis / (document.documentElement.clientHeight*3);
+						translateY =min - overDis*step;
+					}
+					
+					
+					var nowTime = new Date().getTime();
+					var nowPoint = nowY;
+					timeValue = nowTime - lastTime;
+					disValue = nowPoint - lastPoint;
+					lastTime = nowTime;
+					lastPoint = nowPoint;
+					
+					css(child,"translateY",translateY);
+				})
+				
+				wrap.addEventListener("touchend",function(){
+					var speed = disValue/timeValue;
+					if(Math.abs(speed)<0.5){
+						return;
+					}
+					var left = speed*300;
+					var translateY = css(child,"translateY");
+					var target = translateY + left;
+					var bessel = "";
+					var time =0;
+					time=Math.abs(speed)*0.4*10;
+					time=time<0.3?0.3:time;
+					
+					if(target>0){
+						target = 0;
+						bessel ="cubic-bezier(.12,.39,.61,1.75)";
+					}
+					if(target<min){
+						target = min;
+						bessel ="cubic-bezier(.12,.39,.61,1.75)";
+					}
+					
+					console.log(target);
+					child.style.transition =time+"s "+bessel;
+					css(child,"translateY",target);
+				})
+			
+			}
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="scroll"></div>
+		</div>
+	</body>
+</html>

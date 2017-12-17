@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>无标题文档</title>
+	<style>
+		*{ 
+			margin:0; 
+			padding:0;
+		}
+		body{
+			background: #F4F4EA;
+		}
+		li{
+			list-style: none;
+		}
+		
+		a{
+			text-decoration: none;
+			color: #333;
+		}
+		
+		#wrap{
+			width: 910px;
+			height: 38px;
+			margin: 200px auto;
+		}
+		
+		#list{
+			height:38px;
+			border:#ccc solid 1px;
+			border-right:none;
+			position:relative;
+			overflow:hidden;
+		}
+		#list li{
+			float:left;
+			height:38px;
+			line-height:38px;
+			width:100px;
+			border-right:#ccc solid 1px;
+			text-align:center;
+		}
+		#list li a{
+			display: block;
+		}
+		.square{height:38px;transition:200ms transform;}
+		ul li:nth-of-type(1) .square{background:#b9d329;}
+		ul li:nth-of-type(2) .square{background:#c0ebf7;}
+		ul li:nth-of-type(3) .square{background:#b9d329;}
+		ul li:nth-of-type(4) .square{background:#69bcf3;}
+		ul li:nth-of-type(5) .square{background:#79d9f3;}
+		ul li:nth-of-type(6) .square{background:#fa5f94;}
+		ul li:nth-of-type(7) .square{background:#acd180;}
+		ul li:nth-of-type(8) .square{background:#fab4cc;}
+		ul li:nth-of-type(9) .square{background:#ffae5b;}
+		
+		ul li:hover .square{
+			transform: translateY(-38px);
+		}
+	</style>
+<script>
+
+window.onload = function(){
+	var liNodes = document.getElementsByTagName('li');
+	var oA = document.getElementById('a1');
+	
+	for(var i=0;i<liNodes.length;i++){
+		liNodes[i].onmouseover = function(){
+			var flag =this.getAttribute("flag");
+			if(flag){
+				oA.src = 'http://s8.qhimg.com/share/audio/piano1/'+flag+'4.mp3';
+				oA.play();
+			}
+		};
+	}
+	
+};
+
+</script>
+</head>
+
+<body>
+	<div id="wrap">
+		<ul id="list">
+			<li flag="a">
+				<a href="javascript:;">我的主页</a>
+				<div class="square"></div>
+			</li>
+			<li >
+				<a href="javascript:;">新闻头条</a>
+				<div class="square"></div>
+			</li>
+			<li flag="b">
+				<a href="javascript:;">电视剧</a>
+				<div class="square"></div>
+			</li>
+			<li >
+				<a href="javascript:;">最新电影</a>
+				<div class="square"></div>
+			</li>
+			<li flag="c">
+				<a href="javascript:;">小游戏</a>
+				<div class="square"></div>
+			</li>
+			<li>
+				<a href="javascript:;">小说大全</a>
+				<div class="square"></div>
+			</li>
+			<li flag="d">
+				<a href="javascript:;">旅游度假</a>
+				<div class="square"></div>
+			</li>
+			<li>
+				<a href="javascript:;">正品购物</a>
+				<div class="square"></div>
+			</li>
+			<li flag="e">
+				<a href="javascript:;">今日团购</a>
+				<div class="square"></div>
+			</li>
+		</ul>
+	</div>
+	<audio id="a1"></audio>
+</body>
+</html>

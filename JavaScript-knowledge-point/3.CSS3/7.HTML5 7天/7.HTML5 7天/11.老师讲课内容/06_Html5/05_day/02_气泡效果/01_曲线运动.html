@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#test{
+				position: absolute;
+				left: 200px;
+				top: 200px;
+				width: 10px;
+				height: 10px;
+				background: pink;
+			}
+			.box{
+				position: absolute;
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test"></div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var testNode = document.querySelector("#test");
+			var left = testNode.offsetLeft;
+			var top = testNode.offsetTop;
+			var deg = 0;
+			var num =100;
+			
+			setInterval(function(){
+				deg++;
+				
+				testNode.style.left =left + 0.5*(deg*Math.PI/180)*num +"px";
+				testNode.style.top = top - 2*(Math.sin(deg*Math.PI/180))*num +"px";
+				
+				var box =document.createElement("div");
+				box.className="box";
+				box.style.left = testNode.offsetLeft+"px";
+				box.style.top = testNode.offsetTop+"px";
+				document.body.appendChild(box);
+			},10);
+		}
+	</script>
+</html>

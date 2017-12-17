@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			body{
+				background: #383838;
+				/*解决空隙问题*/
+				font-size: 0;
+			}
+			#controller{
+				height: 25px;
+				background: #2A2A2A;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="player">
+			<video id="video"  src="http://gslb.miaopai.com/stream/B~dRdhKMQeI6cuE5aqoGYoVaqbu0YNVn.mp4"></video>
+			<div id="controller">
+				<div class="btns">
+					<span class="start"></span>
+					<span class="stop"></span>
+				</div>
+				<div class="process">
+					<div class="wrap">
+						<div id="inner">
+							
+						</div>
+					</div>
+					<div id="wrap2">
+						
+					</div>
+				</div>
+				<div class="msg">
+					<div class="time">
+						<span class="now">00:00</span><span class="all">01:03</span>
+					</div>
+					<div class="sound">
+						<div class="switch">
+							
+						</div>
+						<div class="wrap">
+							<div id="inner">
+								
+							</div>
+						</div>
+						<div id="wrap2">
+							
+						</div>
+					</div>
+					<div class="full">
+						<span class="full-screen">
+							
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var video = document.querySelector("#player video");
+			video.width=document.documentElement.clientWidth;
+			video.height=document.documentElement.clientHeight - 25;
+			
+			
+			
+			window.onresize=function(){
+				video.width=document.documentElement.clientWidth;
+				video.height=document.documentElement.clientHeight - 25;
+			}
+		}
+	</script>
+</html>

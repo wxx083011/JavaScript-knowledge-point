@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			body{
+				background: #383838;
+			}
+			#player{
+				/*解决空隙问题*/
+				font-size: 0;
+				min-width: 300px;
+			}
+			#controller{
+				position: relative;
+				height: 25px;
+				background: #2A2A2A;
+			}
+			
+			
+			
+			/*主进度条*/
+			#controller .process{
+				height: 25px;
+				margin: 0 230px 0 55px;
+			}
+			#controller .process .wrap{
+				position: relative;
+				top: 11px;
+				height: 3px;
+				background: #737373;
+			}
+			#controller .process .wrap .inner{
+				position: absolute;
+				top: -2px;
+				left: 0;
+				width: 9px;
+				height: 7px;
+				background: white;
+				border-radius: 2px;
+			}
+			#controller .process .wrap2{
+				position: absolute;
+				left:0;
+				top:11px;
+				width:0;
+				height: 3px;
+				background: deeppink;
+			}
+			
+			
+			
+			/*按钮排*/
+			#controller .btns{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 55px;
+				height: 25px;
+				text-align: center;
+			}
+			#controller .btns span{
+				position: absolute;
+				top: 8px;
+				display: inline-block;
+				width: 9px;
+				height: 11px;
+				background-image:url(images/icon.png);
+				background-repeat: no-repeat;
+			}
+			#controller .btns .start{
+				background-position:0 -23px ;
+				margin-left: -18px;
+			}
+			#controller .btns .start.active{
+				background-position:0 -11px ;
+			}
+			
+			
+			/*msg*/
+			#controller .msg{
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 230px;
+				height: 25px;
+				font-size: 12px;
+				color: #FFFFFF;
+			}
+			#controller .msg > div{
+				float:left;
+				height: 25px;
+			}
+			#controller .msg .time{
+				width: 120px;
+				line-height: 25px;
+				text-align: center;
+			}
+			#controller .msg .sound{
+				width: 80px;
+			}
+			#controller .msg .sound .switch{
+				width: 20px;
+				height: 25px;
+				float: left;
+			}
+			#controller .msg .sound .s_process{
+				width: 60px;
+				height: 25px;
+				float: left;
+			}
+			#controller .msg .sound .switch .item{
+				display: inline-block;
+				margin: 7px auto;
+				width: 12px;
+				height: 12px;
+				background: url(images/icon.png) no-repeat;
+				background-position:0 -34px;
+			}
+			#controller .msg .sound .switch .item.active{
+				background-position:0 -46px;
+			}
+			
+			#controller .msg .sound .s_process .wrap{
+				position: relative;
+				top: 11px;
+				height: 3px;
+				background: #737373;
+			}
+			#controller .msg .sound .s_process .wrap .inner{
+				position: absolute;
+				top: -2px;
+				left: 0;
+				width: 9px;
+				height: 7px;
+				background: white;
+				border-radius: 2px;
+			}
+			#controller .msg .sound .s_process .wrap2{
+				position: absolute;
+				left:0;
+				top:11px;
+				width:0;
+				height: 3px;
+				background: deeppink;
+			}
+			
+			
+			
+			#controller .msg .full{
+				width: 30px;
+				text-align: center;
+			}
+			#controller .msg .full .full-screen{
+				display: inline-block;
+				margin: 7px auto;
+				width: 11px;
+				height: 11px;
+				background: url(images/icon.png) no-repeat;
+				background-position: 0 -58px;
+			}
+			#controller .msg .full .full-screen.active{
+				background-position: 0 -70px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="player">
+			<video id="video"  src="http://gslb.miaopai.com/stream/B~dRdhKMQeI6cuE5aqoGYoVaqbu0YNVn.mp4"></video>
+			<div id="controller">
+				<div class="btns">
+					<span class="start active"></span>
+					<span class="stop"></span>
+				</div>
+				<div class="process">
+					<div class="wrap">
+						<div class="inner">
+							
+						</div>
+					</div>
+					<div class="wrap2">
+						
+					</div>
+				</div>
+				<div class="msg">
+					<div class="time">
+						<span class="now">00:00:00</span>/<span class="all">01:03:00</span>
+					</div>
+					<div class="sound">
+						<div class="switch">
+							<span class="item"></span>
+						</div>
+						<div class="s_process">
+							<div class="wrap">
+								<div class="inner">
+									
+								</div>
+							</div>
+							<div class="wrap2">
+								
+							</div>
+						</div>
+					</div>
+					<div class="full">
+						<span class="full-screen">
+							
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var video = document.querySelector("#player video");
+			video.width=document.documentElement.clientWidth;
+			video.height=document.documentElement.clientHeight - 25;
+			
+			
+			
+			window.onresize=function(){
+				video.width=document.documentElement.clientWidth;
+				video.height=document.documentElement.clientHeight - 25;
+			}
+		}
+	</script>
+</html>

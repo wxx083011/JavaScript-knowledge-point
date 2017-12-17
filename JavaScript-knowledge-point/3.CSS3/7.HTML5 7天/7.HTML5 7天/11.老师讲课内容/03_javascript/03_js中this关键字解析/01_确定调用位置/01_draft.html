@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--我们需要根据 "调用位置" 上函数的 "调用方式" 来确定函数中this使用的   "绑定规则"-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function baz() {
+			//调用栈是baz
+			// 因此，当前调用位置是全局作用域
+			console.log( "baz");
+			
+			
+			bar(); // <-- bar的调用位置
+		}
+		
+		function bar() {
+			//调用栈是baz-->bar
+			// 因此，当前调用位置是在baz中
+			
+			console.log( "bar");
+			foo(); // <-- foo的调用位置
+		}
+		
+		function foo() {
+			debugger
+			//调用栈是baz-->bar-->foo
+			// 因此，当前调用位置是在bar中
+			
+			console.log( "foo");
+		}
+		
+		
+		baz(); // <-- baz的调用位置
+	</script>
+</html>

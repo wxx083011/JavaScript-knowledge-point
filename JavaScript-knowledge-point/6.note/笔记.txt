@@ -1,0 +1,60 @@
+1.命令行窗口（终端 、 shell、小黑屏）
+	- 打开方式：
+		win+r  --> 输入cmd --> 回车
+	- 在windows的命令行窗口中，可以直接输入一些DOS命令，来对计算机进行操作	
+	- 简单的命令
+		dir 列出当前目录下的所有文件（夹）
+			. 表示当前目录
+			.. 表示上一级目录
+			
+		cd 进入到指定的目录中
+			cd .. 返回上一级目录
+			
+		md 文件夹名字 
+			- 创建一个新的文件夹
+			
+		rd 文件夹名字
+			- 删除指定的文件夹
+			
+		x:
+			- 切换到指定的磁盘
+			
+2.环境变量 *****	
+	- 环境变量指的是系统中需要使用的变量
+	- path 环境变量
+		- 例子：	C:\Users\lilichao\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\lilichao\AppData\Local\Programs\Python\Python36\;C:\work\jdk\jdk1.7.0_75/bin;%CATALINA_HOME%/bin;C:\work\soft\tools\AppServ\Apache24\bin;C:\work\soft\tools\AppServ\php5;C:\Users\lilichao\AppData\Local\Programs\Fiddler;C:\work\environment\Egret\Egret Wing 3\bin;C:\Program Files\MongoDB\Server\3.2\bin
+		
+		- path环境变量中保存的是一个一个的路径，多个路径之间使用;隔开
+			- 当我们在命令行中访问一个文件时，系统会首先在当前目录下去寻找指定文件，
+				如果找到了，则直接使用。
+					如果找不到，则依次去path环境变量的路径中寻找，如果找到了则直接使用，
+					如果没有找到，则继续寻找下一个位置，直到找到为止，
+					如果所有的路径都没有找到该文件，则报错
+					
+		- 如果某个文件需要在任意位置都能访问，则可以将其路径添加到path环境变量中	
+
+3.进程 和 线程		
+	进程
+		- 进程中保存了程序要执行所需要的一些必备的条件
+		- 进程就相当于工厂中的车间（工作计划）
+	
+	线程
+		- 线程是CPU中的最小的计算单位，程序需要通过线程来执行
+		- 线程就相当于工厂中的工人
+		
+	单线程
+		- 程序由一个线程执行
+		- JavaScript就是单线程的
+		
+	多线程
+		- 由多个线程同时执行程序
+		- 并发问题
+
+
+
+
+	
+					
+					
+					
+			

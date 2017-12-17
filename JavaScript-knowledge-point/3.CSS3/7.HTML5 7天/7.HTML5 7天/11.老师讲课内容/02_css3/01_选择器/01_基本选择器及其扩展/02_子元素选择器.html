@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>子元素选择器</title>
+<!--我们也可以称它为直接后代选择器-->
+<style type="text/css">
+#wrap > .inner {
+	color: pink;
+}
+</style>
+</head>
+<body>
+<div id="wrap">
+	<div>
+		<div class="inner">最里层</div>
+	</div>
+	<div class="inner">wrap下一层</div>
+	<div class="inner">wrap下一层</div>
+	<div class="inner">wrap下一层</div>
+</div>
+</body>
+</html>

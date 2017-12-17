@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<script>
+window.onload = function (){
+	var oCheck1 = document.getElementById('check1');
+	var op =document.getElementById('p1');
+	
+	var oBtn = document.getElementById('btn1');
+	oBtn.onclick = function (){
+		/*自动类型转换
+ 		各类型-->Boolean类型
+				发生场景:条件判断,取反!,undefined==null-->true
+				undefined->false
+				null->false
+				数值型0或0.0或NaN->false
+				字符串长度为0->false
+				其它->true
+				
+				布尔值的属性,attriute和proterty会实时同步????
+						1.修改attriute后,会同步proterty(没有动过proterty)--没法确定
+						2.修改proterty后,不会同步attriute
+						3.修改attriute后,不会同步proterty(动过proterty后)
+				
+				监控一下:
+				oCheck1.checked;
+				oCheck1.attributes.checked.nodeValue;		
+		*/
+		debugger
+		oCheck1.setAttribute("checked","test");
+		oCheck1.setAttribute("checked",undefined);
+		oCheck1.setAttribute("checked",null);
+		oCheck1.setAttribute("checked",0);
+		oCheck1.setAttribute("checked","");
+		oCheck1.setAttribute("checked","checked");
+		
+		
+		oCheck1.checked="test";
+		oCheck1.checked=undefined;
+		oCheck1.checked=null;
+		oCheck1.checked=0;
+		oCheck1.checked="";
+		oCheck1.checked="checked";
+		oCheck1.checked="";
+
+		oCheck1.setAttribute("checked","test");
+		oCheck1.setAttribute("checked",undefined);
+		oCheck1.setAttribute("checked",null);
+		oCheck1.setAttribute("checked",0);
+		oCheck1.setAttribute("checked","");
+		oCheck1.setAttribute("checked","checked");
+	};
+};
+</script>
+
+</head>
+
+<body>
+
+<input id="check1" name="checkName" type="checkbox" checked="checked"/>
+<input id="btn1" type="button" value="按钮" />
+<p id="p1">这是一些文字</p>
+
+</body>
+</html>

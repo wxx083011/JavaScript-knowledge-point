@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+		<!--
+			父级没有定位
+					==> offsetParent:body
+			父级有定位
+					==> offsetParent:定位父级
+			本身定位为fixed
+				不是火狐
+					==>offsetParent:null
+				是火狐
+					==>offsetParent:body	
+		-->
+<style>
+	*{padding: 0;margin: 0;}
+	div {padding: 70px 60px;}
+	#div1 {background: red;position: relative;}
+	#div2 {background: green;position: relative;}
+	#div3 {background: orange;position: absolute;}
+	#div4 {background: pink;position: absolute;}
+</style>
+<script>
+window.onload = function() {
+	
+	var oDiv4 = document.getElementById('div4');
+	var p = getPos( oDiv4 );
+	console.log(p);
+	
+	
+	//拿到任何元素到html的距离
+	function getPos(obj) {
+		var pos = {left:0, top:0};
+		while (obj) {
+			pos.left += obj.offsetLeft;
+			pos.top += obj.offsetTop;
+			obj = obj.offsetParent;
+		}
+		return pos;
+	}
+
+	
+}
+</script>
+</head>
+
+<body id="body1">
+	<div id="div1">
+    	<div id="div2">
+        	<div id="div3">
+        		<div id="div4">
+        			
+        		</div>
+        	</div>
+        </div>
+    </div>
+</body>
+</html>

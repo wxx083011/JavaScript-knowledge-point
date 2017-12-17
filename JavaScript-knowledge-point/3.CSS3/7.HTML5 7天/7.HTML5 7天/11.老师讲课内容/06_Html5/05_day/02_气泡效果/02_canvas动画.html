@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: gray;
+			}
+			#test{
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				background: white;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="400" height="400"></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oc =document.querySelector("#test");
+			if(oc.getContext){
+				var ctx =oc.getContext("2d");
+				ctx.strokeRect(0,0,100,100);
+				
+				var mun =0;
+				setInterval(function(){
+					mun++;
+					ctx.strokeRect(mun,mun,100,100);
+				},100)
+			}
+		}
+	</script>
+</html>

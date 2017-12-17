@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html id="html">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--
+			1.浏览器不一样
+			2.父级有没有定位
+			3.本身有没有定位
+				--没有定位 
+				--绝对定位 相对定位
+				--固定定位
+		-->
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#one{
+				position: fixed;
+			}
+			#two{
+				/*position: absolute;*/
+			}
+			#three{
+				position: fixed;
+			}
+			
+		</style>
+	</head>
+	<body id="body">
+		<div id="one">
+			<div id="two">
+				<div id="three">
+					
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		/*
+			本身定位不是fixed
+	 			如果有定位父级    ==>定位父级
+	 			如果没有定位父级 ==>body
+	 		本身定位为fixed
+	 			==> offsetParent:null(谷歌 欧鹏 苹果 ie7以上)
+	 			==> offsetParent:body（火狐）
+		*/
+		
+		console.log(three.offsetParent.id);
+		
+	</script>
+</html>

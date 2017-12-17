@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrap{
+				border: 1px solid;
+			}
+			#inner{
+				width: 100px;
+				height: 100px;
+				background: pink;
+				float: left;
+			}
+			
+			/*触发了ie67底下的haslayout*/
+			.clearfix{
+				*zoom: 1;
+			}
+			/*ie 6 7底下不支持伪元素*/
+			.clearfix:after{
+				content: ".";
+				display: block;
+				clear: both;
+				height: 0;
+				visibility: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap" class="clearfix">
+			<div id="inner">
+				
+			</div>
+		</div>
+	</body>
+</html>

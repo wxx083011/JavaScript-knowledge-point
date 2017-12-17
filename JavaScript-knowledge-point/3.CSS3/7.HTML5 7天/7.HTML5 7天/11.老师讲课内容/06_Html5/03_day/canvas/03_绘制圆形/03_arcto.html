@@ -1,0 +1,36 @@
+<!DOCTYPE >
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<style>
+			body{ background:black;}
+			#c1{ background:white;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+				
+				oGC.save();
+				oGC.beginPath();
+				oGC.strokeStyle="pink";
+				oGC.moveTo(100,300);
+				oGC.lineTo(100,100);
+				oGC.lineTo(200,200);
+				oGC.stroke();
+				
+				oGC.restore();
+				oGC.beginPath();
+				oGC.moveTo(100,300);
+				oGC.arcTo(100,100,200,200,200);
+//				oGC.closePath();
+				oGC.stroke();
+			};
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="c1" width="800" height="600"></canvas>
+	</body>
+</html>

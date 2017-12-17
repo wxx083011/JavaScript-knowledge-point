@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 200px;
+			height: 200px;
+			background: red;
+			margin: 100px auto;
+			font-size: 20px;
+			color: #fff;
+		}
+	</style>
+	<script type="text/javascript" src="js/transform.js"></script>
+	<script type="text/javascript">
+		document.addEventListener("touchstart",function(e){
+				e.preventDefault();
+			}
+		)
+		window.onload = function() {
+			var box = document.querySelector("#box");
+			css(box,"translateZ",0);//清除transform的残影问题
+			var start =0;
+			box.addEventListener("gesturestart",function(){
+				start = css(box,"scale");
+			})
+			
+			box.addEventListener("gesturechange",function(e){
+					var disS = e.scale;
+					css(box,"scale",start*disS);
+			})
+		};
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

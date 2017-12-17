@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	//函数的提升是优于变量的提升的
+	
+	//函数与变量的行为不一致
+	//在低版本的浏览器会输出else
+	//在现代浏览器中，在块内部定义函数是不会提升的，我们不建议也应该禁止在块内部去定义函数
+	
+	
+	test();
+	
+	if(true){
+		function test(){
+			console.log("if");
+		}
+	}else{
+		function test(){
+			console.log("else");
+		}
+	}
+//	test();
+	
+	</script>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			body{
+				background: #383838;
+			}
+			#player{
+				/*解决空隙问题*/
+				font-size: 0;
+				min-width: 300px;
+			}
+			#controller{
+				position: relative;
+				height: 25px;
+				background: #2A2A2A;
+			}
+			
+			
+			
+			/*主进度条*/
+			#controller .process{
+				position: relative;
+				height: 25px;
+				margin: 0 230px 0 55px;
+			}
+			#controller .process .wrap{
+				position: relative;
+				top: 11px;
+				height: 3px;
+				background: #737373;
+			}
+			#controller .process .wrap .inner{
+				position: absolute;
+				top: -2px;
+				left: 0;
+				width: 9px;
+				height: 7px;
+				background: white;
+				border-radius: 2px;
+			}
+			#controller .process .wrap2{
+				position: absolute;
+				left:0;
+				top:11px;
+				width:0;
+				height: 3px;
+				background: deeppink;
+			}
+			
+			
+			
+			/*按钮排*/
+			#controller .btns{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 55px;
+				height: 25px;
+				text-align: center;
+			}
+			#controller .btns span{
+				position: absolute;
+				top: 8px;
+				display: inline-block;
+				width: 9px;
+				height: 11px;
+				background-image:url(images/icon.png);
+				background-repeat: no-repeat;
+			}
+			#controller .btns .start{
+				background-position:0 -23px ;
+				margin-left: -18px;
+			}
+			#controller .btns .start.active{
+				background-position:0 -11px ;
+			}
+			
+			
+			/*msg*/
+			#controller .msg{
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 230px;
+				height: 25px;
+				font-size: 12px;
+				color: #FFFFFF;
+			}
+			#controller .msg > div{
+				float:left;
+				height: 25px;
+			}
+			#controller .msg .time{
+				width: 120px;
+				line-height: 25px;
+				text-align: center;
+			}
+			#controller .msg .sound{
+				width: 80px;
+			}
+			#controller .msg .sound .switch{
+				width: 20px;
+				height: 25px;
+				float: left;
+			}
+			#controller .msg .sound .s_process{
+				position: relative;
+				width: 60px;
+				height: 25px;
+				float: left;
+			}
+			#controller .msg .sound .switch .item{
+				display: inline-block;
+				margin: 7px auto;
+				width: 12px;
+				height: 12px;
+				background: url(images/icon.png) no-repeat;
+				background-position:0 -34px;
+			}
+			#controller .msg .sound .switch .item.active{
+				background-position:0 -46px;
+			}
+			
+			#controller .msg .sound .s_process .wrap{
+				position: relative;
+				top: 11px;
+				height: 3px;
+				background: #737373;
+			}
+			#controller .msg .sound .s_process .wrap .inner{
+				position: absolute;
+				top: -2px;
+				left: 0;
+				width: 9px;
+				height: 7px;
+				background: white;
+				border-radius: 2px;
+			}
+			#controller .msg .sound .s_process .wrap2{
+				position: absolute;
+				left:0;
+				top:11px;
+				width:0;
+				height: 3px;
+				background: deeppink;
+			}
+			
+			
+			
+			#controller .msg .full{
+				width: 30px;
+				text-align: center;
+			}
+			#controller .msg .full .full-screen{
+				display: inline-block;
+				margin: 7px auto;
+				width: 11px;
+				height: 11px;
+				background: url(images/icon.png) no-repeat;
+				background-position: 0 -58px;
+			}
+			#controller .msg .full .full-screen.active{
+				background-position: 0 -70px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="player">
+			<video id="video"  src="http://gslb.miaopai.com/stream/B~dRdhKMQeI6cuE5aqoGYoVaqbu0YNVn.mp4"></video>
+			<div id="controller">
+				<div class="btns">
+					<span class="start"></span>
+					<span class="stop"></span>
+				</div>
+				<div class="process">
+					<div class="wrap">
+						<div class="inner">
+							
+						</div>
+					</div>
+					<div class="wrap2">
+						
+					</div>
+				</div>
+				<div class="msg">
+					<div class="time">
+						<span class="now">00:00:00</span>/<span class="all">01:03:00</span>
+					</div>
+					<div class="sound">
+						<div class="switch">
+							<span class="item"></span>
+						</div>
+						<div class="s_process">
+							<div class="wrap">
+								<div class="inner">
+									
+								</div>
+							</div>
+							<div class="wrap2">
+								
+							</div>
+						</div>
+					</div>
+					<div class="full">
+						<span class="full-screen">
+							
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/drag.js"></script>
+	<script type="text/javascript">
+		/*		
+		  		播放按钮点击时:
+					切换播放按钮的样式
+					控制视频的播放暂停
+						播放:控制进度条的前进(通过开启定时器来实现)
+						暂停:要关闭定时器不让进度条前进
+						
+				停止按钮点击时
+					切换播放按钮的样式
+					控制视频暂停
+						暂停:要关闭定时器不让进度条前进
+					进度条重置为0
+					视频时间调整为0
+					
+				拖拽时根据拖拽距离控制视频时间
+				
+				点击进度条时,根据点击位置控制视频时间
+					点击进度条时,默认就应该是播放操作
+					切换播放按钮的样式
+					控制视频的播放
+						:控制进度条的前进:通过开启定时器来实现
+		*/
+		window.onload=function(){
+			var timer =0;
+			//获取元素
+			var video = document.querySelector("#player video");
+			video.width=document.documentElement.clientWidth;
+			video.height=document.documentElement.clientHeight - 25;
+			//进度条
+			var inner1 = document.querySelector("#controller .process .wrap .inner");
+			var pw1=document.querySelector("#controller .process .wrap");
+			var pw2 = document.querySelector("#controller .process .wrap2");
+			var p1 = document.querySelector("#controller .process");
+			var inner2 = document.querySelector("#controller .msg .wrap .inner");
+			var mw1 = document.querySelector("#controller .msg .wrap");
+			var mw2 = document.querySelector("#controller .msg .wrap2");
+			//播放暂停按钮
+			var btns =document.querySelector("#controller .btns");
+			var btn1 = document.querySelector("#controller .btns .start");
+			var btn2 = document.querySelector("#controller .btns .stop");
+			
+			
+			//自定义播放器
+			play();
+			function play(){
+				window.onresize=function(){
+					video.width=document.documentElement.clientWidth;
+					video.height=document.documentElement.clientHeight - 25;
+				}
+				
+				//播放 暂停
+				function move(){
+					var scale = video.currentTime/video.duration;
+					inner1.style.left = pw2.style.width =scale*pw1.clientWidth+"px";
+				}
+				btn1.addEventListener("click",function(){
+					if(video.paused){
+						addClass(this,"active");
+						
+						video.play();
+						timer = setInterval(move,1000);
+					}else{
+						removeClass(this,"active");
+						
+						video.pause();
+						clearInterval(timer);
+					}
+				})
+				
+				//停止按钮
+				btn2.onclick=function(){
+					removeClass(btn1,"active");
+					
+					video.currentTime = 0;
+					inner1.style.left = pw2.style.width =0;
+					
+					video.pause();
+					clearInterval(timer);
+				}
+				
+				
+				//进度条拖拽
+				var callback1={
+					move:function(){
+						pw2.style.width = this.offsetLeft+"px";
+						var scale = this.offsetLeft /(pw1.clientWidth - this.offsetWidth);
+						video.currentTime = scale * video.duration;
+					}
+				}
+				var callback2={
+					move:function(){
+						mw2.style.width = this.offsetLeft+"px";
+					}
+				}
+				$.drag(inner1,callback1);
+				$.drag(inner2,callback2);
+				
+				//进度条点击事件
+				p1.onclick=function(ev){
+					ev=ev||event;
+					inner1.style.left=pw2.style.width =ev.clientX - btns.offsetWidth+"px";
+					var scale = inner1.offsetLeft/(pw1.clientWidth - inner1.offsetWidth);
+					video.currentTime = scale * video.duration;
+					
+					video.play();
+					timer=setInterval(move,1000);
+					addClass(btn1,"active");
+				}
+				
+			}
+			
+			
+			//class 操作函数
+			function addClass(node,className){
+				var reg=new RegExp("\\b"+className+"\\b");
+				if(!reg.test(node.className)){
+					node.className +=(" "+className); 
+				}
+			}
+			function removeClass(node,className){
+				if(node.className){
+					var reg=new RegExp("\\b"+className+"\\b");
+					var classes = node.className;
+					node.className=classes.replace(reg,"");
+					if(/^\s*$/g.test(node.className)){
+						node.removeAttribute("class");
+					}
+				}else{
+					node.removeAttribute("class");
+				}
+			}
+		
+		}
+	</script>
+</html>

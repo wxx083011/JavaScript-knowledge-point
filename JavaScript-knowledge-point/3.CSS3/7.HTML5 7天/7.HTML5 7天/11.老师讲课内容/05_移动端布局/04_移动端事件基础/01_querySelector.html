@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>01_querySelector</title>
+		<style type="text/css">
+			div{
+				margin: 20px auto;
+			}
+			.selectorAll{
+				width: 100px;
+				height: 100px;
+				border: 1px solid gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var boxArr =document.querySelectorAll(".selectorAll");
+				var boxArr2 =document.getElementsByClassName("selectorAll");
+				boxArr[0].style.background="gray";
+				boxArr2[1].style.background="gray";
+				
+				var body =document.querySelector("body");
+				body.innerHTML+='<div class="selectorAll"></div>'
+//				boxArr[4].style.background="gray";
+				boxArr2[4].style.background="gray";
+			}
+		</script>
+	</head>
+	<body>
+		<div class="selectorAll"></div>
+		<div class="selectorAll"></div>
+		<div class="selectorAll"></div>
+		<div class="selectorAll"></div>
+	</body>
+</html>

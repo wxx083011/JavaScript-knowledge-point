@@ -1,0 +1,16 @@
+@zero:0px;
+*{
+    margin: @zero;
+    padding: @zero;
+}
+.test(@w:1px,@style:solid,@c: black){
+    border: @arguments;
+}
+#wrap{
+    position: relative;
+    height: 200px;
+    width: 200px;
+    background: pink;
+    margin: @zero auto;
+    .test();
+}

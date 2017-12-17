@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			canvas元素默认具有高宽
+			width：  150px
+			height：300px
+		-->
+		<canvas id="test"></canvas>
+	</body>
+	<script type="text/javascript">
+		var testNode = document.querySelector("#test");
+		var panel = testNode.getContext("2d");
+		
+		panel.strokeRect(50.5,50.5,50,50);
+//		panel.fillRect(10,10,50,50);
+	</script>
+</html>

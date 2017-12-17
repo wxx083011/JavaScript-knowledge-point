@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--定义和用法
+			disabled 属性规定应该禁用 input 元素。
+			被禁用的 input 元素既不可用，也不可点击。
+			注释：disabled 属性无法与 <input type="hidden"> 一起使用。
+		-->
+	</head>
+	<body>
+		<form action="form_action.asp" method="get">
+		  <p>First name: <input id="test" type="text" name="fname" disabled /></p>
+		  <p>Last name: <input type="text" name="lname" disabled="disabled" /></p>
+		  <input type="submit" value="Submit" />
+		</form>
+	</body>
+	<script>
+		var test =document.getElementById("test");
+		console.log(test.disabled);
+		test.disabled="";
+//		test.checked=null;
+//		test.checked=false;
+		
+	</script>
+</html>
+
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">		
+		<!--
+		对于checked,selected,disabled的支持
+			html       :有支持
+			css        :没有支持
+			javascript :有支持
+		-->
+		<title></title>
+		<style>
+			#checkedAll_2{
+
+			}
+		</style>
+		<!--
+		浏览器渲染引擎处理的情况下:
+		1.在input中当checked属性存在时该复选框就默认被勾上 不管checked属性值为什么
+				属性值是checked=false;浏览器渲染引擎 解析时也会给它变成checked="false"
+				属性值是checked=null ;浏览器渲染引擎 解析时也会给它变成checked="null"
+				属性值是checked=""   ;浏览器渲染引擎 解析时也会给它变成checked
+		
+		2.在html中标签里属性的属性值都是会被双引号包含住的,你不写,浏览器也会给你加上
+		
+        3.在javaScript中当获取到该复选框节点时将其属性checked赋值为null false或者 ''时 该复选框不会被勾上
+			其余情况则全会被勾上
+		-->
+
+	</head>
+	<body>
+		
+		<form method="post" action="">
+			你爱好的运动是？
+			<input type="checkbox" id="checkedAll_2" checked="checked" />全选/全不选 
+		</form>
+		
+	</body>
+	
+	<script>
+		var test =document.getElementById("checkedAll_2");
+		console.log(test.checked);
+		
+//		test.setAttribute("checked","");
+//		test.setAttribute("checked",false);
+//		test.setAttribute("checked",null);
+		test.setAttribute("checked",undefined);
+
+//		test.checked="";
+//		test.checked=null;
+//		test.checked=false;
+//		test.checked=undefined;
+
+		
+	</script>
+	
+</html>

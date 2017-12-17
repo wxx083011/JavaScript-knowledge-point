@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			body{
+				background:pink;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			矩形默认为黑色，
+		-->
+		<canvas id="test"></canvas>
+	</body>
+	<script type="text/javascript">
+		var testNode = document.querySelector("#test");
+		var panel = testNode.getContext("2d");
+		
+		
+		panel.fillRect(50,50,50,50);
+//		panel.clearRect(50,50,50,50);
+	</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 200px;
+			height: 200px;
+			background: red;
+			margin: 100px auto;
+			font-size: 20px;
+			color: #fff;
+		}
+	</style>
+	<script type="text/javascript" src="js/transform.js"></script>
+	<script type="text/javascript">
+		document.addEventListener("touchstart",
+			function(e){
+				e.preventDefault();
+			}
+		)
+		window.onload = function() {
+			var box = document.querySelector("#box");
+			var start =0;
+			box.addEventListener("gesturestart",function(){
+				start = css(box,"rotate");
+			})
+			
+			box.addEventListener("gesturechange",function(e){
+					var disR = e.rotation;
+					css(box,"rotate",start+disR);
+			})
+		};
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

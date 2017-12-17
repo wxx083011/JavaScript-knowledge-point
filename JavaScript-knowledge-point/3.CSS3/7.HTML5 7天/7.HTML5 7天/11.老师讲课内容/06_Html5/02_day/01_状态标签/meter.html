@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<meter value=".9"></meter>
+		<meter value="300" min="20" max="200"></meter>
+		<!--相对于optimum在higher段-->
+		<meter value="40" min="20" max="200" low="50" high="100"></meter>
+		<!--
+			optimum在lower和higher段时会出现三种颜色
+			optimum在low和high之间时会出现两种颜色
+		-->
+		<meter value="110" min="20" max="200" low="50" high="100" optimum="80"></meter>
+	</body>
+	
+</html>

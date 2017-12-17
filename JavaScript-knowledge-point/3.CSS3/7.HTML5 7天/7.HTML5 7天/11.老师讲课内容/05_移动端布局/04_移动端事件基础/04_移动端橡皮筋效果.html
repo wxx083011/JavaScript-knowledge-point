@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title>07_移动端橡皮筋效果</title>
+		<!--
+			阻止 document的 	touchstart 或者 touchmove，可以清除橡皮筋效果
+		-->
+		<style type="text/css">
+			#test{
+				width: 200px;
+				height: 2000px;
+				background: pink;
+				margin: 200px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		document.addEventListener("touchmove",function(ev){
+//			ev.preventDefault();
+		})
+	</script>
+</html>

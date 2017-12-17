@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input id="cb" type="checkbox" class="test"/><br>
+			
+		<button id='btn1'>选中</button>
+		<button id='btn2'>不选中</button>
+	</body>
+	<script type="text/javascript">
+		var oCheck1 = document.getElementById('cb');
+		
+		btn1.onclick = function(){
+			oCheck1.setAttribute('checked', 'checked'+new Date().getTime());
+			oCheck1.setAttribute('class', 'two'+new Date().getTime());
+		};
+		btn2.onclick = function(){
+			oCheck1.removeAttribute('checked');
+			oCheck1.removeAttribute('class');
+		};
+		cb.onclick=function(){
+			debugger;
+		};
+	</script>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#test{
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				background: gray;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="400" height="400"></canvas>
+	</body>
+	<script type="text/javascript">
+		var testNode = document.querySelector("#test");
+		if(testNode.getContext){
+			var ctx = testNode.getContext("2d");
+			move();
+		}
+		
+		
+		
+		
+		function move(){
+			ctx.save();
+			ctx.translate(200,200);
+			ctx.rotate(-90*Math.PI/180); 
+			ctx.lineWidth = 8;
+		  	ctx.strokeStyle = "black";
+		  	ctx.lineCap = "round";
+		  	
+		  	//时针刻度
+		  	ctx.save();
+		  	for (var i=0;i<12;i++){
+			    ctx.beginPath();
+			    ctx.rotate(30*Math.PI/180);
+			    ctx.moveTo(100,0);
+			    ctx.lineTo(120,0);
+			    ctx.stroke();
+			 }
+		  	ctx.restore();
+		  	
+		  	//分针刻度
+		  	ctx.save();
+		  	ctx.lineWidth = 5;
+		  	for(var i=0;i<60;i++){
+		  		if(i%5!=0){
+		  			ctx.beginPath();
+		  			ctx.moveTo(117,0);
+				    ctx.lineTo(120,0);
+				    ctx.stroke();
+		  		}
+		  		ctx.rotate(6*Math.PI/180);
+		  	}
+		  	ctx.restore();
+		  	
+			
+			
+			//大圆盘
+			ctx.beginPath();
+			ctx.lineWidth = 14;
+			ctx.strokeStyle = '#325FA2';
+			ctx.arc(0,0,140,0,360*Math.PI/180,true);
+			ctx.stroke();
+			ctx.restore();
+		}
+		
+		
+	</script>
+</html>

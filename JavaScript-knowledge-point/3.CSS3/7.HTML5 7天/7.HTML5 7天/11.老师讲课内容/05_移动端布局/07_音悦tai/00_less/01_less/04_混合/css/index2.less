@@ -1,0 +1,33 @@
+@zero:0;
+*{
+    margin: @zero;
+    padding: @zero;
+}
+
+.jz(){
+    position: absolute;
+    left: @zero;
+    right: @zero;
+    top: @zero;
+    bottom: @zero;
+    margin: auto;
+    background: pink;
+    height: 100px;
+    width: 100px;
+}
+
+#wrap{
+    position: relative;
+    width: 300px;
+    height: 400px;
+    border: 1px solid;
+    margin: @zero auto;
+    
+    #box1{
+       .jz;
+    }
+    #box2{
+        .jz;
+        background: deeppink;
+    }
+}

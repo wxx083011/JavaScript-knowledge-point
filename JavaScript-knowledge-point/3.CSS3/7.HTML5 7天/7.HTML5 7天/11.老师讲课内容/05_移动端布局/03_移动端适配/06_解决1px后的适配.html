@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width"/>
+		<link rel="stylesheet" type="text/css" href="css/new_file.css"/>
+		<script type="text/javascript">        
+	        var dpr, rem, scale;
+	        //根标签
+			var docEl = document.documentElement;
+			var fontEl = document.createElement('style');
+			var metaEl = document.querySelector('meta[name="viewport"]');
+			
+			//像素比
+			dpr = window.devicePixelRatio || 1;
+			rem = docEl.clientWidth * dpr / 16;
+			scale = 1 / dpr;
+			
+			// 设置viewport，进行缩放，达到高清效果，实现1物理像素
+			metaEl.setAttribute('content', 'initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale + ',user-scalable=no');
+			
+			
+			// 动态写入样式，实现rem适配
+			docEl.firstElementChild.appendChild(fontEl);
+			fontEl.innerHTML = 'html{font-size:' + rem + 'px!important;}';
+			
+			
+			window.dpr = dpr;
+			window.rem = rem;
+    </script>
+	</head>
+	<body>
+		<div id="one"></div>
+	</body>
+</html>
+
+
+

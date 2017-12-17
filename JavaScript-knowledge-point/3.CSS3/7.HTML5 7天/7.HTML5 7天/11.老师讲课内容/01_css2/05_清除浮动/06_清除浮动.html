@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+    		/*
+    		1、给父级加高度 (扩展性不好)
+			2、给父级加浮动 (页面中所有元素都加浮动，margin左右自动失效（floats bad ！）)
+			3、空标签清除浮动 (IE6 最小高度 19px；（解决后IE6下还有2px偏差）)
+			4、.br清浮动	(不符合工作中：结构、样式、行为，三者分离的要求)
+			5、overflow
+			6、伪元素after
+			*/
+			#wrap{
+				/*float: left;*/
+				/*position: absolute;*/
+				position: fixed;
+				width: 400px;
+				height: 400px;
+				border: 1px solid;
+				margin: 0 auto;
+			}
+			#inner{
+				width: 100px;
+				height: 100px;
+				background: pink;
+				float: left;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="wrap" class="clearfix">
+			<div id="inner">
+				
+			</div>
+		</div>
+	</body>
+</html>

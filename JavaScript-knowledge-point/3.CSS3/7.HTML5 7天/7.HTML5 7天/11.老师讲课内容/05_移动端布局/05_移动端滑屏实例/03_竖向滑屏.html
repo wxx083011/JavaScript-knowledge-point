@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>03_竖向滑屏</title>
+<!--限制top距离-->
+<style>
+html {
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	margin: 0;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+#wrap{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+#scroll{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background: pink;
+}
+</style>
+<script>
+	document.addEventListener("touchstart",function(ev){
+		ev.preventDefault();
+	})
+	
+	window.onload=function(){
+		var wrap=document.querySelector("#wrap");
+		var scroll=document.querySelector("#scroll");
+		var startPoint=0;
+		var scrollPoint=0;
+		var mintop=wrap.clientHeight-scroll.offsetHeight;
+		
+		wrap.addEventListener("touchstart",function(ev){
+			var touch=ev.changedTouches[0];
+			startPoint=touch.pageY;
+			scrollPoint=scroll.offsetTop;
+		});
+		wrap.addEventListener("touchmove",function(ev){
+			var touch=ev.changedTouches[0];
+			var movePoint=touch.pageY;
+			var dis = movePoint - startPoint;
+			
+			var top=scrollPoint + dis;
+			if(top>0){
+				top=0;
+			}else if(top<mintop){
+				top=mintop;
+			}
+			
+			scroll.style.top =top  +"px";
+		});
+	}
+</script>
+</head>
+<body>
+<div id="wrap">
+	<div id="scroll">
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    	nmx<br>
+    </div>
+</div>
+</body>
+</html>

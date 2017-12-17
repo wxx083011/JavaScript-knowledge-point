@@ -1,0 +1,311 @@
+/*基准值的设置*/
+/*样式重置*/
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  font-family: helvetica;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+}
+a,
+input {
+  outline: none;
+  -webkit-appearance: none;
+}
+/*清除系统滚动条*/
+/*模拟固定定位*/
+/*头部样式*/
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+.wrap {
+  height: 100%;
+  overflow: hidden;
+  background-color: #eee;
+}
+#header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+/*头部上半部分*/
+.headerT {
+  height: 2rem;
+}
+#logo {
+  float: left;
+  padding: 0.38518519rem 0.25185185rem 0.31111111rem;
+}
+#logo img {
+  width: 3.55555556rem;
+}
+#menuBtn {
+  float: left;
+  width: 1.91111111rem;
+  height: 2rem;
+  background: url(../img/menuBtn.png) no-repeat;
+  background-size: 1.21481481rem 3.45185185rem;
+}
+.menuBtnClos {
+  background-position: center 0.23703704rem !important;
+}
+.menuBtnShow {
+  background-position: center -1.77777778rem !important;
+}
+#btns {
+  float: right;
+  padding-top: 0.31111111rem;
+}
+#btns a {
+  float: left;
+  width: 1.64444444rem;
+  height: 1.15555556rem;
+  line-height: 1.15555556rem;
+  background-color: #690;
+  color: #ccc;
+  margin-right: 0.22222222rem;
+  font-size: 0.62222222rem;
+  text-align: center;
+  border-radius: 0.11851852rem;
+}
+#btns .searchBtn {
+  width: 1.92592593rem;
+  height: 1.3037037rem;
+  line-height: 1.3037037rem;
+  color: #fff;
+  margin: 0.04444444rem 0.44444444rem 0 0;
+  font-weight: bold;
+  border-radius: 0.14814815rem;
+}
+/*头部下半部分 (搜索区域)*/
+#search {
+  height: 1.52592593rem;
+  padding: 0.23703704rem;
+}
+#search input[type="text"] {
+  float: left;
+  box-sizing: border-box;
+  width: 12.28148148rem;
+  height: 1.52592593rem;
+  background-color: #999;
+  padding: 0.07407407rem 0.14814815rem;
+  border: 1px solid #5a5a5a;
+  font-size: 0.60740741rem;
+  color: #333;
+  border-radius: 0.22222222rem 0 0 0.22222222rem;
+}
+#search input[type="text"]::-webkit-input-placeholder {
+  color: #333;
+}
+#search input[type="text"]:focus {
+  background-color: #FFFFFF;
+}
+#search input[type="submit"] {
+  float: right;
+  width: 3.00740741rem;
+  height: 1.52592593rem;
+  border: none;
+  background-color: #414040;
+  color: #fff;
+  font-size: 0.60740741rem;
+  border-radius: 0 0.22222222rem 0.22222222rem 0;
+}
+/*头部菜单*/
+#nav {
+  position: absolute;
+  left: 0;
+  top: 2rem;
+  width: 100%;
+  padding: 0.14814815rem 0;
+  border-top: 1px  solid #6a6a6a ;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+#nav li {
+  float: left;
+  width: 22.5%;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 0.8rem;
+  text-align: center;
+}
+#nav a {
+  color: #fff;
+}
+/*内容区*/
+/*导航*/
+#content {
+  padding-top: 4rem;
+}
+#navScroll {
+  box-sizing: border-box;
+  height: 2.62222222rem;
+  border-bottom: 1px solid #CCCCCC;
+  padding: 0.45925926rem 0 0.20740741rem;
+  overflow: hidden;
+}
+#navs {
+  white-space: nowrap;
+  line-height: 1.91111111rem;
+  font-size: 0;
+  float: left;
+}
+#navs li {
+  display: inline-block;
+  height: 1.91111111rem;
+  padding: 0 0.56296296rem;
+  font-size: 1.03703704rem;
+}
+#navs a {
+  color: #020202;
+}
+#navs .active {
+  background: #690;
+}
+#navs .active a {
+  color: #fff;
+}
+/*轮播*/
+#picTab {
+  position: relative;
+  overflow: hidden;
+}
+#picList {
+  position: absolute;
+  left: 0;
+  top: 0;
+  list-style: none;
+  /*overflow: hidden;*/
+}
+#picList li {
+  float: left;
+}
+#picList img {
+  width: 100%;
+  display: block;
+}
+#picNav {
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 100%;
+  text-align: center;
+  line-height: 10px;
+}
+#picNav span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #C00;
+  border-radius: 5px;
+}
+#picNav .active {
+  background: #0F0;
+}
+/*可同步的选项卡*/
+.tab {
+  width: 15.4962963rem;
+  background: #fff;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.tabHeader {
+  height: 1.55555556rem;
+  line-height: 1.55555556rem;
+}
+.tabHeader h2 {
+  float: left;
+  font-size: 1.03703704rem;
+}
+.tabHeader a {
+  float: right;
+  font-size: 0.59259259rem;
+}
+.tabNav {
+  line-height: 1.55555556rem;
+  position: relative;
+  overflow: hidden;
+}
+.tabNav a {
+  float: left;
+  height: 1.55555556rem;
+  width: 1.77777778rem;
+  font-size: 0.65185185rem;
+  text-align: center;
+  color: #6b6b6b ;
+}
+.tabNav span {
+  position: absolute;
+  left: 0;
+  bottom: 0.2rem;
+  width: 1.77777778rem;
+  height: 0.13333333rem;
+  background: #6f900d;
+}
+.tabList {
+  width: 300%;
+  overflow: hidden;
+}
+.tabList ul {
+  width: 33.33333333333333333333333333333%;
+  float: left;
+}
+.tabList li {
+  box-sizing: border-box;
+  width: 7.4962963rem;
+  height: 5.03703704rem;
+  margin: 0.11851852rem;
+  padding: 0.07407407rem;
+  font-size: 0.59259259rem;
+  background: #efefef;
+  float: left;
+}
+.tabList a {
+  display: block;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tabList img {
+  width: 100%;
+}
+.tabShow {
+  overflow: hidden;
+}
+.tabNext {
+  height: 1.4962963rem;
+  background: url(../img/loading.gif) no-repeat;
+  background-position: 50% 50%;
+  opacity: 0;
+}
+#scrollBar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: pink;
+  opacity: 0;
+  transition: .3s opacity;
+  z-index: 3;
+}

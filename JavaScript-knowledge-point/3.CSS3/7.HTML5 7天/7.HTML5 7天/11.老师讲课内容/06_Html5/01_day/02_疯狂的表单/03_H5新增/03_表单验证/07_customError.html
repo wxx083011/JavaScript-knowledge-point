@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+</head>
+<body>
+<form>
+	<input type="text" id="text" />
+	<input type="submit" />
+</form>
+<script>
+	var oText=document.getElementById("text");
+	oText.oninput=function()
+	{
+		if(this.value=="xfz")
+		{
+			this.setCustomValidity("请不要输入敏感词");
+		}
+		else
+		{
+			this.setCustomValidity("");
+		}
+	};
+	
+	oText.addEventListener("invalid",function(){
+		console.log(this.validity.customError)
+	})
+</script>
+</body>
+</html>

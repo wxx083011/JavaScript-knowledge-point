@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--总结:
+			attribute是DOM元素(文档节点)的属性
+			property是原生js对象的属性
+		-->
+	</head>
+	<body>
+		<div id="box" class="box" gameid="880">
+			hello
+		</div>
+	</body>
+	
+	<script>
+		var elem=document.getElementById("box");
+		
+/*		
+ 	 	每个元素节点都有一个attribute节点用来获取属性相关信息
+		与attribute节点对应的,每个元素节点还有一个property属性来获取属性值
+		但对于自定义的attribute节点或自定义的property,两者就没有关系了
+
+		需要注意的是:对于ie6和ie7,没有区分attribute和property
+*/
+		console.log(elem.getAttribute("id"));
+		console.log(elem.id);
+
+/*
+		新手需要注意的是,Dom元素一些默认常见的attribute节点都有与之对应的property属性,
+		比较特殊的是一些Boolean类型的property.只要存在该节点,对应得proterty的值就是true
+*/
+	</script>
+</html>

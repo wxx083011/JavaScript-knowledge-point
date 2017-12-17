@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title></title>
+		<!--整合后的最终版-->
+		<style type="text/css" id="css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wapper {
+				position: relative;/*供nav绝对定位使用*/
+			}
+			#list{
+				position: absolute;/*子元素浮动,父元素为绝对定位,则父元素不用清除浮动*/
+				left: 0;
+				top: 0;
+				/*overflow: hidden;清浮动*/
+				list-style: none;
+			}
+			#list li{
+				float: left;
+			}
+			#list li img { /*js写完之后再加*/
+				width: 100%;
+				display: block;/*解决img撑a标签空隙3px*/
+			}
+			
+			#nav {
+				position: absolute;
+				left: 0;
+				bottom: 3px;
+				width: 100%;/*使小原点居中*/
+				line-height: 10px;
+				text-align: center;
+			}
+			#nav span {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				background: #C00;
+				border-radius: 5px;
+			}
+			#nav .active {
+				background: #0F0;
+			}
+		</style>
+		<script src="10_cssTransform.js"></script>
+		<script type="text/javascript">
+			
+			document.addEventListener(
+				"touchstart",
+				function(ev){
+					ev.preventDefault();
+				}
+			);
+			
+			window.onload=function(){
+				var css = document.querySelector("#css");
+				var wrap = document.querySelector("#wapper");
+				var list = document.querySelector("#list");
+				list.innerHTML += list.innerHTML;
+				var lis = document.querySelectorAll("#list li");
+				var nav = document.querySelectorAll("#nav span");
+				var style = "#wapper{height:"+ lis[0].offsetHeight+"px}";
+					style+="#list{width:"+lis.length+"00%}";
+					style+="#list li{width:"+(1/lis.length*100)+"%}"
+					css.innerHTML+= style;
+				var clearTime=0;
+				var now =0;
+				var startPoint = 0;
+				var startX = 0;
+				var	dis =0;
+				cssTransform(list,"translateX",0);
+				auto();
+				
+				wrap.addEventListener(
+					"touchstart",
+					function(e) {
+						list.style.transition = "none";
+						
+						var translateX = cssTransform(list,"translateX");
+						now = Math.round(-translateX / wrap.offsetWidth);
+						//注意nav中span的个数必须是总li的一半
+						if(now == 0) {
+							now = nav.length;
+						}
+						if(now == lis.length-1) {
+							now = nav.length-1;
+						}
+						
+						startPoint = e.changedTouches[0].clientX;
+						
+						cssTransform(list,"translateX",-now * wrap.offsetWidth);
+						startX = cssTransform(list,"translateX");
+						
+						clearInterval(clearTime);
+					}
+				);
+				wrap.addEventListener(
+					"touchmove",
+					function(e) {
+						var nowPoint = e.changedTouches[0].clientX;
+						dis = nowPoint - startPoint;
+						cssTransform(list,"translateX",startX + dis)
+					}
+				);
+				wrap.addEventListener(
+					"touchend",
+					function(e) {
+						var translateX = cssTransform(list,"translateX");
+						
+						now = Math.round(-translateX / wrap.offsetWidth);
+//						if(dis>0){//向左滑 	floor向下取整
+//							 now = Math.floor(-translateX / wrap.offsetWidth);
+//						}else{	//向右滑		ceil向上取整
+//							 now = Math.ceil(-translateX / wrap.offsetWidth);
+//						}
+						
+						//限制触屏范围
+						if(now<0){
+							now=0;
+						}
+						if(now > lis.length-1) {
+							now = lis.length-1;
+						}
+						//新增过渡效果
+						autoMove();
+						auto();
+					}
+				);
+				
+				function auto() {
+					 clearTime=setInterval(
+						function() {
+							if(now == lis.length-1){
+								now =nav.length-1;
+							}
+							list.style.transition = "none";
+							cssTransform(list,"translateX",-now * wrap.offsetWidth);
+							setTimeout(function(){
+								now++;
+								autoMove();
+							},20)
+						},2000);
+				}
+				
+				function autoMove(){
+					list.style.transition = "1s";
+					cssTransform(list,"translateX",-now * wrap.offsetWidth);
+					for(var i = 0 ; i < nav.length; i++) {
+						nav[i].className = "";
+					}
+					nav[now%nav.length].className = "active";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="wapper">
+			<ul id="list">
+				<li>
+					<a href="javascript:viod(0)">
+						<img src="img/1.jpg" />
+					</a>
+				</li>
+				<li>
+					<a href="javascript:viod(0)">
+						<img src="img/2.jpg" />
+					</a>
+				</li>
+				<li>
+					<a href="javascript:viod(0)">
+						<img src="img/3.jpg" />
+					</a>
+				</li>
+				<li>
+					<a href="javascript:viod(0)">
+						<img src="img/4.jpg" />
+					</a>
+				</li>
+				<li>
+					<a href="javascript:viod(0)">
+						<img src="img/5.jpg" />
+					</a>
+				</li>
+			</ul>
+		
+			<nav id="nav">
+		    	<span class="active"></span>
+		        <span></span>
+		        <span></span>
+		        <span></span>
+		        <span></span>
+	    	</nav>
+    	</div>
+	</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+		<title>营销场景</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+			}
+			#wrap{
+				height: 100%;
+				overflow: hidden;
+			}
+			#wrap .list{
+				height: 100%;
+			}
+			#wrap .list li:nth-child(1){
+				height: 100%;
+				background: url(img/b.png) no-repeat;
+				background-size:100% 100%;
+			}
+			#mask{
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 10;
+				transition: 1s opacity;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<canvas id="mask"></canvas>
+			<ul class="list">
+				<li></li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		document.addEventListener("touchstart",function(ev){
+			var ev=ev||event;
+			
+		});
+		
+		(function(){
+			var targetW = 640; 
+			var width = document.documentElement.clientWidth;
+			var scale = width/targetW;
+			var metaNode =document.querySelector("meta[name='viewport']");
+			metaNode.setAttribute("content","initial-scale="+scale+",user-scalable=no");
+		})();
+		
+		window.onload=function(){
+			var mask = document.querySelector("#mask");
+			
+			//刮开效果
+			canvasOpen();
+			function canvasOpen(){
+				mask.width=document.documentElement.clientWidth;
+				mask.height=document.documentElement.clientHeight;
+				if(mask.getContext){
+					var ctx = mask.getContext("2d");
+					
+					var img = new Image();
+					img.src="img/a.png";
+					img.onload=function(){
+						draw(this);
+					}
+				}
+				
+				function draw(img){
+					ctx.drawImage(img,0,0,mask.width,mask.height);
+					
+					mask.addEventListener("touchstart",function(ev){
+						var ev = ev||event;
+						var touchC = ev.changedTouches[0];
+						
+						//手指在画布上的位置
+						var x = touchC.clientX - this.offsetLeft;
+						var y = touchC.clientY - this.offsetTop;
+						
+						ctx.globalCompositeOperation="destination-out";
+						ctx.lineWidth=80;
+						ctx.lineCap="round";
+						
+						ctx.save();
+						ctx.beginPath();
+						ctx.moveTo(x,y);
+						ctx.lineTo(x+1,y+1);
+						ctx.stroke();
+						ctx.restore();
+						
+					});
+					
+					mask.addEventListener("touchmove",function(){
+						var ev =ev||event;
+						var touchC = ev.changedTouches[0];
+						
+						//手指在画布上的位置
+						var x = touchC.clientX - this.offsetLeft;
+						var y = touchC.clientY - this.offsetTop;
+						
+						ctx.save();
+						ctx.lineTo(x,y);
+						ctx.stroke();
+						ctx.restore();
+						
+					});
+					
+					mask.addEventListener("touchend",function(){
+						var ev =ev||event;
+						var touchC = ev.changedTouches[0];
+						
+						var datas = ctx.getImageData(0,0,mask.width,mask.height);
+						var allPx = datas.width * datas.height;
+						var flag =0;
+						for(var i=0;i<allPx;i++){
+							if(datas.data[4*i+3] == 0){
+								flag++;
+							}
+						}
+						
+						if(flag > allPx/2){
+							mask.style.opacity=0;
+						}
+					});
+					
+					mask.addEventListener("transitionend",function(){
+							this.remove();
+					})
+				}
+				
+			}
+		}
+		
+		
+		
+		
+	</script>
+</html>

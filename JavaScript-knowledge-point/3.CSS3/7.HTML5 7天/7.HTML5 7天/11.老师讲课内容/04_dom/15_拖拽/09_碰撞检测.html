@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				position: absolute;
+				left: 0;
+				top: 20px;
+				width: 100px;
+				height: 100px;
+				background: pink;
+				z-index: 2;
+			}
+			#img1{
+				position: absolute;
+				left: 500px;
+				top: 200px;
+			}
+		</style>
+	</head>
+	<body>
+			佟刚同学:
+			<div id="box"></div>
+			<img id="img1" src="tg.png" />
+	</body>
+	<script>
+		window.onload=function(){
+			var obj = document.getElementById("box");
+			var oImg = document.getElementById("img1");
+			drag(obj);
+			
+			function drag(obj){
+				var startPoint={x:0,y:0};
+				var elementPoint={x:0,y:0};
+				
+				obj.onmousedown=function(ev){
+					var ev = ev||event;
+					startPoint.x=ev.clientX;//到页面可视区域的距离
+					startPoint.y=ev.clientY;
+					
+					elementPoint.x=obj.offsetLeft;
+					elementPoint.y=obj.offsetTop;
+					
+					if(obj.setCapture){
+						obj.setCapture();
+					}
+					
+					document.onmousemove=function(ev){
+						var ev = ev||event;
+						var nowPoint={x:0,y:0};
+						nowPoint.x=ev.clientX;
+						nowPoint.y=ev.clientY;
+						
+						var L =elementPoint.x+(nowPoint.x - startPoint.x);
+						var T =elementPoint.y+(nowPoint.y - startPoint.y);
+						
+						if(L<10){
+							L=0;
+						}else if( L > document.documentElement.clientWidth - obj.offsetWidth ) {
+							L = document.documentElement.clientWidth - obj.offsetWidth;
+						}
+						
+						if(T<0){
+							T=0;
+						}else if ( T > document.documentElement.clientHeight - obj.offsetHeight ) {
+							T = document.documentElement.clientHeight - obj.offsetHeight;
+						}
+						
+						obj.style.left=L+"px";
+						obj.style.top=T+"px";
+						
+						
+						var L1 = getPos(obj).left;
+						var R1 = L+obj.offsetWidth;
+						var T1 = getPos(obj).top;
+						var B1 = T+obj.offsetHeight;
+						
+						var L2 = getPos(oImg).left;
+						var R2 = L2+oImg.offsetWidth;
+						var T2 = getPos(oImg).top;
+						var B2 =T2+oImg.offsetHeight;
+						
+						if(R1<L2||L1>R2||B1<T2||T1>B2){
+							oImg.src="tg.png";
+						}else{
+							oImg.src="xfz.png";
+						}
+						
+					}
+					
+					document.onmouseup=function(){
+						document.onmousemove = document.onmouseup = null;
+						if(obj.releaseCapture){
+							obj.releaseCapture();
+						}
+					}
+					
+					return false;
+				}
+			}
+			
+			
+			function getPos(obj) {
+				var pos = {left:0, top:0};
+				while (obj) {
+					pos.left += obj.offsetLeft;
+					pos.top += obj.offsetTop;
+					obj = obj.offsetParent;
+				}
+				return pos;
+			}
+			
+		}
+	</script>
+</html>

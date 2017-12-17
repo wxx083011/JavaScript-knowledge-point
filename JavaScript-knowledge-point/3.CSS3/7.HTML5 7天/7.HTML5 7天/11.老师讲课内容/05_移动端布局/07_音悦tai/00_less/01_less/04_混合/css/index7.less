@@ -1,0 +1,47 @@
+@zero:0;
+*{
+    margin: @zero;
+    padding: @zero;
+}
+
+.triangle(bottom,@w:5px,@c:pink){
+//  width: 0;
+//  height: 0;
+//  overflow: hidden;
+    border-width:@w;
+    border-color: @c transparent transparent transparent;
+    border-style:solid dashed dashed dashed;
+}
+.triangle(top,@w:5px,@c:pink){
+//  width: 0;
+//  height: 0;
+//  overflow: hidden;
+    border-width:@w;
+    border-color:  transparent transparent @c transparent;
+    border-style: dashed dashed solid dashed;
+}
+.triangle(left,@w:5px,@c:pink){
+//  width: 0;
+//  height: 0;
+//  overflow: hidden;
+    border-width:@w;
+    border-color:transparent @c transparent transparent;
+    border-style:dashed solid dashed dashed;
+}
+.triangle(right,@w:5px,@c:pink){
+//  width: 0;
+//  height: 0;
+//  overflow: hidden;
+    border-width:@w;
+    border-color:  transparent transparent transparent @c;
+    border-style: dashed dashed dashed solid;
+}
+.triangle(@_,@w:5px,@c:pink){
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+#sanjiao{
+    .triangle(left,50px);
+}

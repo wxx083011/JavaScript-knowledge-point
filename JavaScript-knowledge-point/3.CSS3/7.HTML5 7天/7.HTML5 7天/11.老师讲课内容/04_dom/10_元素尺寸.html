@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#test{
+				
+				height: 200px;
+				padding: 10px;
+				border: 9px solid;
+				margin: 8px;
+				background: pink;
+				/*box-sizing: border-box;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test" style="width: 200px;"></div>
+	</body>
+	<script>
+		var testNode =document.getElementById("test");
+		console.log(testNode.clientWidth);
+		console.log(testNode.offsetWidth);
+		console.log(testNode.style.width);
+	</script>
+</html>

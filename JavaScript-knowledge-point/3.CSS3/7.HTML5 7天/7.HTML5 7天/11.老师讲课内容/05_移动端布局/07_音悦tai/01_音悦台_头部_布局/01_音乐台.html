@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title>无标题文档</title>
+		<script>
+			setRem();
+			//判断手机横竖屏状态：
+			//移动端的浏览器一般都支持window.orientation这个参数，通过这个参数可以判断出手机是处在横屏还是竖屏状态
+			window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+		        setRem();
+			}, false); 
+			
+			function setRem() {
+				var html = document.querySelector("html");
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 16 + "px";
+			}
+		</script>
+		<style>
+			body,h1,h2,h3,h4,h5,h6,p,dl,dd {
+				margin: 0;
+				font-family: Helvetica;
+			}
+			ul,ol {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			img{
+				vertical-align: top;
+			}
+			a{
+				text-decoration: none;
+			}
+			
+			html,body {
+				height: 100%;
+				overflow: hidden;
+			}
+			.wrap {
+				height: 100%;
+				overflow: auto;
+			}
+			#header {
+				position: absolute;
+				height: 100px;
+				background: pink;
+				left: 0;
+				top: 0;
+				width: 100%;
+			}
+		</style>
+	</head>
+<body>
+<section class="wrap">
+	<header id="header"></header>
+	nmx1 <br />
+	nmx2 <br />
+	nmx3 <br />
+	nmx4 <br />
+	nmx5 <br />
+	nmx6 <br />
+	nmx7 <br />
+	nmx8 <br />
+	nmx9 <br />
+	nmx10 <br />
+	nmx11 <br />
+	nmx12 <br />
+	nmx13 <br />
+	nmx14 <br />
+	nmx15 <br />
+	nmx16 <br />
+	nmx17 <br />
+	nmx18 <br />
+	nmx19 <br />
+	nmx20 <br />
+	nmx21 <br />
+	nmx22 <br />
+	nmx23 <br />
+	nmx24 <br />
+	nmx25 <br />
+	nmx26 <br />
+	nmx27 <br />
+	nmx28 <br />
+	nmx29 <br />
+	nmx30 <br />
+	nmx31 <br />
+	nmx32 <br />
+	nmx33 <br />
+</section>
+</body>
+</html>		

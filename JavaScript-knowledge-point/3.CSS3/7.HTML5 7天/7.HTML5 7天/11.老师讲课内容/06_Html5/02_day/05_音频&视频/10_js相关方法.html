@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>音频</title>
+		<!--
+			play()  :  媒体播放
+			pause()  :  媒体暂停
+			load()  :  重新加载媒体
+		-->
+	</head>
+	<body>
+		<video id="testV"  controls width="300" height="300" poster="media/xfz.png">
+			<source src="media/sp/OUTPUT.mp4" ></source>
+		</video>
+		
+		<input type="button"  id="test" value="点我" />
+		
+		<audio id="testA" src="media/yp/OUTPUT.mp3" controls></audio>
+		<input type="button"  id="test1" value="播放" />
+		<input type="button"  id="test2" value="暂停" />
+	</body>
+	<script type="text/javascript">
+	window.onload = function(){
+		var testV = document.getElementById('testV');
+		var oInput = document.getElementById('test');
+		var snode = testV.getElementsByTagName("source")[0];
+		
+		testV.onmouseover = function(){
+			this.play();
+		};
+		
+		testV.onmouseout = function(){
+			this.pause();
+		};
+		
+		oInput.onclick = function(){
+			snode.src="xxxxx";
+			testV.load();
+		};
+		
+		
+		
+		var oInput1 = document.getElementById('test1');
+		var oInput2 = document.getElementById('test2');
+		var testA = document.getElementById('testA');
+		oInput1.onclick=function(){
+			testA.play();
+		}
+		oInput2.onclick=function(){
+			testA.pause();
+		}
+		
+	};
+	</script>
+</html>

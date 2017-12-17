@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: pink;
+  margin: 10px;
+}
+#wrap:after {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #ff0000;
+  content: ' ';
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}

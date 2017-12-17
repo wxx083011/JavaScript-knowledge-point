@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+		<!--
+			父级没有定位
+					==> offsetParent:body
+			父级有定位
+					==> offsetParent:定位父级
+			本身定位为fixed
+				不是火狐
+					==>offsetParent:null
+				是火狐
+					==>offsetParent:body	
+		-->
+<style>
+*{margin: 0;padding: 0;}
+div {padding: 60px 70px;}
+#div1 {background: red;position: absolute;}
+#div2 {background: green;}
+#div3 {background: orange;position: relative;}
+</style>
+<script>
+window.onload = function() {
+	
+	var oDiv3 = document.getElementById('div3');
+//	window.onscroll=function(){
+		var p = getPos( oDiv3 );
+		console.log(p);
+//	}
+	
+	
+	//拿到任何元素到html的距离
+	function getPos(obj) {
+		var sLeft =document.documentElement.scrollLeft||document.body.scrollLeft;
+		var sTop =document.documentElement.scrollTop||document.body.scrollTop;
+		
+		var pos = {left:0, top:0};
+		var scrollPos ={left:sLeft,top:sTop}
+		while (obj) {
+			pos.left += obj.offsetLeft;
+			pos.top += obj.offsetTop;
+			obj = obj.offsetParent;
+		}
+		return {left:pos.left-scrollPos.left,top:pos.top-scrollPos.top};
+	}
+
+	
+}
+</script>
+</head>
+
+<body id="body1" style="height: 3000px;">
+	<div id="div1">
+    	<div id="div2">
+        	<div id="div3"></div>
+        </div>
+    </div>
+</body>
+</html>

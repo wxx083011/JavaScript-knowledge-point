@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>00_querySelector</title>
+		<style type="text/css">
+			div{
+				margin: 20px auto;
+			}
+			#selector{
+				width: 100px;
+				height: 100px;
+				border: 1px solid pink;
+			}
+			.selectorAll{
+				width: 100px;
+				height: 100px;
+				border: 1px solid gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var box = document.querySelector("#selector");
+				box.style.background="pink";
+				
+				var boxArr =document.querySelectorAll(".selectorAll");
+				boxArr[0].style.background="gray";
+			}
+		</script>
+	</head>
+	<body>
+		<div id="selector"></div>
+		<div class="selectorAll"></div>
+		<div class="selectorAll"></div>
+		<div class="selectorAll"></div>
+		<div class="selectorAll"></div>
+	</body>
+</html>

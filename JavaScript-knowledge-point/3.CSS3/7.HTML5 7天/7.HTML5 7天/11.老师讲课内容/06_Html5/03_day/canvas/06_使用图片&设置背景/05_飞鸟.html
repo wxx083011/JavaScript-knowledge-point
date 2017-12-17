@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#test{
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="400" height="400"></canvas>
+	</body>
+	<script type="text/javascript">
+		var testNode  =document.querySelector("#test");
+		testNode.width = document.documentElement.clientWidth;
+		testNode.height = document.documentElement.clientHeight;
+		
+		
+		if(testNode.getContext){
+			var ctx = testNode.getContext("2d");
+			var img =new Image();
+			var i =0;
+			var value =0;
+			setInterval(function(){
+				ctx.clearRect(0,0,testNode.width,testNode.height);
+				i++;
+				
+				if(i>8){
+					i=1;
+				}
+				
+				img.src="img/q_r"+i+".jpg";
+				img.onload=function(){
+					draw(this);
+				}
+				function draw(img){
+					ctx.drawImage(img,value,0);
+				}
+				
+				value+=10;
+			},100);
+			
+			
+			
+		}
+	</script>
+</html>

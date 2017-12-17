@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap" style="width: 200px;height: 200px;background: pink;">
+			<div id="inner" style="width: 100px;height: 100px;background: deeppink;">
+				
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		wrap.onmouseleave=function(){
+			console.log("wrap");
+		}
+		inner.onmouseleave=function(ev){
+			console.log("inner");
+			ev.stopPropagation();
+		}
+	</script>
+</html>

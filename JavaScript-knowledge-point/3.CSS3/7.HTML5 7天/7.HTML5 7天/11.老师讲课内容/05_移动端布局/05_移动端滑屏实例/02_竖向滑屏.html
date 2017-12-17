@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>02_竖向滑屏</title>
+	<!--
+		1.手指按下去的时候，记录下手指坐标
+		2.移动的时候，记录手指坐标 
+		3.用移动后的坐标 - 移动前的坐标 = 手指移动的距离
+		4.手指按下去的时候，记录下元素的位置
+		5.移动之后，用手指移动的距离 + 元素的初始位置 =  元素现在所要在的位置
+	 -->
+<style>
+html {
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	margin: 0;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+/*触发事件的元素*/
+#wrap{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+/*真正滚动的元素*/
+#scroll{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background: pink;
+}
+</style>
+<script>
+	document.addEventListener("touchstart",function(ev){
+		ev.preventDefault();
+	})
+	
+	window.onload=function(){
+		var wrap=document.querySelector("#wrap");
+		var scroll=document.querySelector("#scroll");
+		var startPoint=0;
+		var scrollPoint=0;
+		
+		wrap.addEventListener("touchstart",function(ev){
+			var touch=ev.changedTouches[0];
+			startPoint=touch.pageY;
+			scrollPoint=scroll.offsetTop;
+		});
+		wrap.addEventListener("touchmove",function(ev){
+			var touch=ev.changedTouches[0];
+			var movePoint=touch.pageY;
+			var dis = movePoint - startPoint;
+			scroll.style.top = scrollPoint + dis +"px";
+		});
+	}
+</script>
+</head>
+<body style="height: 2000px;">
+	<div id="wrap">
+		<div id="scroll">
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    	nmx<br>
+	    </div>
+	</div>
+</body>
+</html>

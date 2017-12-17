@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<title></title>
+		<style type="text/css">
+			#test{
+				width: 300px;
+				height: 300px;
+				margin: 100px auto;
+				background: pink;
+				font-size: 20px;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test"></div>
+	</body>
+	<script type="text/javascript">
+		document.addEventListener("touchstart",function(ev){
+			ev.preventDefault();
+		})
+		
+		window.onload=function(){
+			var testNode = document.querySelector("#test");
+			//手指触碰当前元素，屏幕上有两个或者两个以上的手指
+			testNode.addEventListener("gesturestart",function(){
+				this.style.background="gray";
+			})
+			
+			//手指触碰当前元素，屏幕上有两个或者两个以上的手指位置在发生移动
+			testNode.addEventListener("gesturechange",function(ev){
+//				this.innerHTML +="1<br/>";
+				this.innerHTML = ev.scale+"<br/>";
+				this.innerHTML += ev.rotation;
+			})
+			
+			testNode.addEventListener("gestureend",function(){
+				this.style.background="pink";
+				this.innerHTML ="";
+			})
+		}
+	</script>
+</html>

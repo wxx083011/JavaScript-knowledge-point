@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title>11_音悦tai</title>
+		<style type="text/css">
+			 *{
+			 	margin: 0;
+			 	padding: 0;
+			 }
+			 
+			 html,body{
+			 	height: 100%;
+			 	overflow: hidden;
+			 }
+			 
+			 #wrap{
+			 	position: relative;
+			 	height: 100%;
+			 	overflow: hidden;
+			 }
+		</style>
+		<script src="js/transform.js"></script>
+		<script>
+			document.addEventListener(
+				"touchstart",
+				function(e) {
+					e.preventDefault();
+				}
+			);
+		
+			window.onload=function(){
+				setTeYt();
+				var wrap = document.querySelector("#wrap");
+				
+				var callBack ={};
+				callBack.start = function() {
+					console.log("滑动开始之前要执行的函数");
+				};
+				callBack.in = function() {
+					console.log("滑动中执行的函数");
+				};
+				callBack.over = function() {
+					console.log("滑动结束执行的函数");
+				};
+				
+				scrollY(wrap,callBack);
+			}
+			
+			function setTeYt(){
+				var scroll = document.querySelector("#scroll");
+				var teYt ="";
+				for(var i=0;i<400;i++){
+					teYt+="nmYnmYnmYnmYnmYnmY-------"+i+"<br/>";
+				}
+				scroll.innerHTML = teYt;
+			}
+			
+			function scrollY(wrap,callBack){
+				var child = wrap.children[0];
+				css(child,"translateZ",0.001);
+				var startpoint=0;
+				var startY =0;
+				var minY =wrap.clientHeight - child.offsetHeight;
+				var flag = 1;
+				var lastDis = 0;
+				var lastTime = 0;
+				var disVal=0;
+				var disTime =0;
+				
+				var Tween={
+					backOut: function(t,b,c,d,s){
+			            if (s == undefined) s = 1.70158;
+			            return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+			        },	
+			        
+					easeOut: function(t,b,c,d){
+			            return -c * ((t=t/d-1)*t*t*t - 1) + b;
+			        }
+				}
+				
+				wrap.addEventListener("touchstart",function(ev){
+//					child.style.transition ="none";
+					clearInterval(child.clearTime);
+					
+					if(callBack&&callBack.start){
+						callBack.start();
+					}
+					
+					startpoint = ev.changedTouches[0].clientY;
+					startY = css(child,"translateY");
+					
+					lastDis = startpoint;
+					lastTime = new Date().getTime();
+					disVal=0;
+					disTime =1;
+				});
+				
+				wrap.addEventListener("touchmove",function(ev){
+					var nowpoint = ev.changedTouches[0].clientY;
+					var dis =nowpoint - startpoint;
+					var translateY = startY+dis;
+					var nowTime =new Date().getTime();
+					if(translateY>0){
+						flag = 0.6-translateY/(wrap.clientHeight*2);
+						translateY =translateY*flag;
+					}
+					if(translateY<minY){
+						var over =  minY - translateY;
+						flag = 0.6-over/(wrap.clientHeight*2);
+						translateY =minY-over*flag;
+					}
+					
+					disVal=nowpoint - lastDis;
+					disTime =nowTime - lastTime;
+					lastDis = nowpoint;
+					lastTime = nowTime;
+					
+					
+					css(child,"translateY",translateY);
+					
+					if(callBack&&callBack.in){
+						callBack.in();
+					}
+				});
+				
+				
+				wrap.addEventListener("touchend",function(){
+					var speed = disVal /disTime;
+					var translateY = css(child,"translateY");
+					var traget = translateY+ speed*300;
+					var time = Math.abs(traget*1.2);
+						time=time < 300?300:time;
+					var bessel ="easeOut";
+					if(traget>0){
+						traget=0;
+						bessel ="backOut";
+//						bessel ="cubic-bezier(.12,.39,.61,1.75)";
+					}
+					if(traget<minY){
+						traget=minY;
+						bessel ="backOut";
+//						bessel ="cubic-bezier(.12,.39,.61,1.75)";
+					}
+					
+//					child.style.transition=time+"ms "+bessel;
+//					css(child,"translateY",traget);
+					move(traget,bessel,time);
+				});
+				
+				function move(traget,bessel,time){
+					/*
+						t:当前是哪一次
+						b:移动的初始值
+						c:初始值与目标点之间的差值
+						d:总次数
+					*/
+					var t=0;
+					var b=css(child,"translateY");
+					var c =traget - b;
+					var d =Math.ceil(time/20);
+					
+					clearInterval(child.clearTime);
+					child.clearTime=setInterval(
+						function(){
+							t++;
+							if(t>d){
+								clearInterval(child.clearTime);
+								if(callBack&&callBack.over){
+									callBack.over();
+								}
+							}else{
+								var top =Tween[bessel](t,b,c,d);
+								css(child,"translateY",top);
+								if(callBack&&callBack.in){
+									callBack.in();
+								}
+							}
+						},20
+					);
+				}
+				
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="scroll"></div>
+		</div>
+	</body>
+</html>

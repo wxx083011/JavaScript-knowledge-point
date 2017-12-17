@@ -1,0 +1,323 @@
+/*清除默认样式*/
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+input,
+a,
+button {
+  margin: 0;
+  padding: 0;
+  font-family: helvetica;
+}
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+li {
+  list-style: none;
+}
+input {
+  outline: none;
+  -webkit-appearance: none;
+}
+/*解决固定定位*/
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+  background: #eee;
+}
+.wrap {
+  overflow: auto;
+  height: 100%;
+}
+#header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: #232323;
+  z-index: 996;
+}
+/*头部布局*/
+#headerT {
+  height: 2rem;
+}
+.logo {
+  float: left;
+  padding: 0.38518519rem 0.25185185rem 0.31111111rem;
+}
+#header img {
+  width: 3.55555556rem;
+}
+#menuBtn {
+  float: left;
+  display: block;
+  width: 1.91111111rem;
+  height: 2rem;
+  background: url(../img/menuBtn.png) no-repeat;
+  background-size: 1.21481481rem 3.45185185rem;
+}
+.menuBtnClos {
+  background-position: center 0.23703704rem !important;
+}
+.menuBtnShow {
+  background-position: center -1.77777778rem !important;
+}
+#nav {
+  float: right;
+  padding-top: 0.31111111rem;
+}
+#nav a {
+  float: left;
+  width: 1.64444444rem;
+  height: 1.15555556rem;
+  line-height: 1.15555556rem;
+  color: #ccc;
+  margin-right: 0.22222222rem;
+  font-size: 0.62222222rem;
+  background: #690;
+  text-align: center;
+  border-radius: 0.11851852rem;
+}
+#nav .searchBtn {
+  width: 1.92592593rem;
+  height: 1.3037037rem;
+  line-height: 1.3037037rem;
+  color: #fff;
+  margin-right: 0.44444444rem;
+  margin-top: 0.04444444rem;
+  font-weight: bold;
+  border-radius: 0.14814815rem;
+}
+#search {
+  height: 1.52592593rem;
+  padding: 0.23703704rem;
+}
+#search input[type="text"] {
+  float: left;
+  box-sizing: border-box;
+  width: 12.28148148rem;
+  height: 1.52592593rem;
+  background: #999;
+  padding: 0.07407407rem 0.14814815rem;
+  border: 1px solid black;
+  font-size: 0.60740741rem;
+  color: #333;
+  border-radius: 0.22222222rem 0 0 0.22222222rem;
+}
+#search input[type="text"]:focus {
+  background: #fff;
+}
+#search input[type="text"]::-webkit-input-placeholder {
+  color: #333;
+}
+#search input[type="submit"] {
+  float: right;
+  width: 3.00740741rem;
+  height: 1.52592593rem;
+  border: none;
+  background: #414040;
+  color: #fff;
+  font-size: 0.60740741rem;
+  border-radius: 0 0.22222222rem 0.22222222rem 0;
+}
+#list {
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  width: 100%;
+  padding: 0.14814815rem 0;
+  border-top: 1px solid #666666;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+#list li {
+  float: left;
+  width: 22.5%;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 0.8rem;
+  text-align: center;
+}
+#list li a {
+  color: #fff;
+  font-weight: bold;
+}
+#content {
+  padding-top: 4rem;
+}
+#navScroll {
+  box-sizing: border-box;
+  height: 2.62222222rem;
+  border-bottom: 1px solid #CCCCCC;
+  padding: 0.45925926rem 0 0.20740741rem;
+  background: #EEEEEE;
+  overflow: hidden;
+}
+#navs {
+  float: left;
+  white-space: nowrap;
+  font-size: 0;
+}
+#navs li {
+  display: inline-block;
+  height: 1.91111111rem;
+  line-height: 1.91111111rem;
+  padding: 0 0.56296296rem;
+  font-size: 1.03703704rem;
+}
+#navs li a {
+  color: #020202 ;
+  font-weight: 500;
+}
+#navs .active {
+  background: #690;
+}
+#navs .active a {
+  color: #fff;
+}
+#picWrap {
+  position: relative;
+  overflow: hidden;
+}
+#picList {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /*overflow: hidden;*/
+}
+#picList li {
+  float: left;
+  list-style: none;
+}
+#picList img {
+  width: 100%;
+  display: block;
+}
+#picNav {
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: 100%;
+  text-align: center;
+  line-height: 10px;
+}
+#picNav span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px ;
+  /*在移动端,圆角的设置最好使用像素值,因为百分比在某些移动设备底下会失效*/
+  background: gray;
+}
+#picNav .picActive {
+  background: deeppink;
+}
+.tab {
+  width: 15.4962963rem;
+  background: #fff;
+  margin: 0 auto;
+}
+.tabHeader {
+  height: 2rem;
+  line-height: 2rem;
+}
+.tabHeader h2 {
+  float: left;
+  font-size: 1.03703704rem;
+}
+.tabHeader a {
+  float: right;
+  font-size: 0.59259259rem;
+  color: #000;
+}
+.tabNav {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 1.55555556rem;
+}
+.tabNav a {
+  float: left;
+  height: 1.55555556rem;
+  width: 1.77777778rem;
+  font-size: 0.65185185rem;
+  color: #6b6b6b;
+  text-align: center;
+}
+.tabNav span {
+  position: absolute;
+  left: 0;
+  bottom: 0.2rem;
+  width: 1.77777778rem;
+  height: 0.13333333rem;
+  background: #6f900d;
+}
+.tab {
+  overflow: hidden;
+}
+.tabList {
+  width: 300%;
+  overflow: hidden;
+}
+.tabList ul {
+  float: left;
+  width: 33.3333%;
+}
+.tabNext {
+  height: 1.4962963rem;
+  width: 100%;
+  background: url(../img/loading.gif) no-repeat;
+  background-position: center;
+  opacity: 0;
+}
+.tabShow {
+  overflow: hidden;
+}
+.tabList li {
+  box-sizing: border-box;
+  width: 7.4962963rem;
+  margin: 0.11851852rem;
+  padding: 0.07407407rem;
+  font-size: 0.59259259rem;
+  background: #efefef;
+  float: left;
+}
+.tabList a {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.tabList span {
+  color: #000 ;
+}
+.tabList img {
+  width: 100%;
+}
+.ice_l,
+.ice_r {
+  float: left;
+}
+.ice .ice_pic {
+  display: inline-block;
+  width: 0.59259259rem;
+  height: 0.59259259rem;
+  background: url(../img/ice.png) no-repeat;
+}
+.ice_l .ice_pic {
+  background-position: 0.02962963rem 0.14814815rem;
+}
+.ice_r .ice_pic {
+  background-position: 0.02962963rem -0.59259259rem;
+}

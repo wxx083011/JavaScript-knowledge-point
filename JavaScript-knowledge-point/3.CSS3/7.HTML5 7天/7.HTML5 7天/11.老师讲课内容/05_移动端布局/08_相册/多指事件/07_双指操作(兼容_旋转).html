@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 200px;
+			height: 200px;
+			background: red;
+			margin: 100px auto;
+			font-size: 20px;
+			color: #fff;
+		}
+	</style>
+	<script type="text/javascript" src="js/transform.js"></script>
+	<script type="text/javascript">
+		document.addEventListener("touchstart",
+			function(e){
+				e.preventDefault();
+			}
+		)
+		window.onload = function() {
+			var box = document.querySelector("#box");
+			var callBack = {
+				start:function(e) {
+					box.style.background = "blue";
+				},
+				change:function(e) {
+					box.innerHTML = e.scale+"<br/>";
+					box.innerHTML +=e.rotation;
+				},
+				end:function(e) {
+					box.style.background = "red";
+				}
+			}
+			gesture(box,callBack);
+		};
+		/*
+			勾股定理:
+				斜边的平方 = 直角边1的平方 + 直角边2的平方; 
+
+			正切：
+				在直角三角形中 对边和临边比值
+
+				Math.atan2();	
+					对于任意不同时等于0的实参数x和y，atan2(y,x)所表达的意思是坐标原点为起点，
+					指向(x,y)的射线在坐标平面上与x轴正方向之间的角的角度。
+					当y>0时，射线与x轴正方向的所得的角的角度指的是x轴正方向绕逆时针方向到达射线旋转的角的角度；
+					而当y<0时，射线与x轴正方向所得的角的角度指的是x轴正方向绕顺时针方向达到射线旋转的角的角度
+		*/
+		function getDistance(p1, p2) {
+			var x = p1.clientX - p2.clientX;
+			var y = p1.clientY - p2.clientY;
+			return Math.sqrt(x*x + y*y);
+		}
+		function getAngle(p1, p2){
+			var x = p1.clientX - p2.clientX;
+			var y = p1.clientY - p2.clientY;
+			return Math.atan2(y, x)*180/Math.PI;
+		}
+		function gesture(el,callBack){
+			var isGesture = false;
+			var start = {};
+			el.addEventListener(
+				"touchstart",
+				function(e) {
+					if(e.touches.length >= 2){
+						isGesture = true;
+						start.dis = getDistance(e.touches[0], e.touches[1]); 
+						start.deg = getAngle(e.touches[0], e.touches[1]);
+						if(callBack&&callBack.start){
+							callBack.start(e);
+						}
+					}
+				}
+			);
+			el.addEventListener(
+				"touchmove",
+				function(e){
+					if(e.touches.length >= 2 && isGesture){
+						var dis = getDistance(e.touches[0], e.touches[1]); 
+						var deg =  getAngle(e.touches[0], e.touches[1]);
+						//this.innerHTML = dis;
+						e.scale = dis/start.dis;
+						e.rotation = deg - start.deg;
+						if(callBack&&callBack.change){
+							callBack.change(e);
+						}
+					}
+				}
+			);
+			el.addEventListener(
+				"touchend",
+				function(e){
+					if(isGesture){
+						if(callBack&&callBack.end){
+							callBack.end(e);
+						}
+					}
+					isGesture = false;
+				}
+			);
+		}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

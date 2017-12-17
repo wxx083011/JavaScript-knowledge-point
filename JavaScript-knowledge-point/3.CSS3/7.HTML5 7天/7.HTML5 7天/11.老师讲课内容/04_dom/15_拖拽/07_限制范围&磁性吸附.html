@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				position: absolute;
+				left: 20px;
+				top: 20px;
+				width: 220px;
+				height: 288px;
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+			佟刚同学:
+			<img id="box" src="tg.png"/>
+	</body>
+	<script>
+		var oBox = document.getElementById("box");
+		var startPoint={x:0,y:0};
+		var elementPoint={x:0,y:0};
+		
+		oBox.onmousedown=function(ev){
+			var ev = ev||event;
+			startPoint.x=ev.clientX;//到页面可视区域的距离
+			startPoint.y=ev.clientY;
+			
+			elementPoint.x=oBox.offsetLeft;
+			elementPoint.y=oBox.offsetTop;
+			
+			if(oBox.setCapture){
+				oBox.setCapture();
+			}
+			
+			document.onmousemove=function(ev){
+				var ev = ev||event;
+				var nowPoint={x:0,y:0};
+				nowPoint.x=ev.clientX;
+				nowPoint.y=ev.clientY;
+				
+				var L =elementPoint.x+(nowPoint.x - startPoint.x);
+				var T =elementPoint.y+(nowPoint.y - startPoint.y);
+				
+				if(L<10){
+					L=0;
+				}else if( L > document.documentElement.clientWidth - oBox.offsetWidth ) {
+					L = document.documentElement.clientWidth - oBox.offsetWidth;
+				}
+				
+				if(T<0){
+					T=0;
+				}else if ( T > document.documentElement.clientHeight - oBox.offsetHeight ) {
+					T = document.documentElement.clientHeight - oBox.offsetHeight;
+				}
+				
+				oBox.style.left=L+"px";
+				oBox.style.top=T+"px";
+			}
+			
+			document.onmouseup=function(){
+				document.onmousemove = document.onmouseup = null;
+				if(oBox.releaseCapture){
+					oBox.releaseCapture();
+				}
+			}
+			
+			return false;
+		}
+		
+		
+	</script>
+</html>

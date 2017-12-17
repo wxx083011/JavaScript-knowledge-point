@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form>
+			<input id="test" type="email"/>
+			<input type="submit"/>
+		</form>
+	</body>
+	<script type="text/javascript">
+		var testNode = document.getElementById("test");
+		testNode.addEventListener("invalid",function(){
+			console.log(this.validity.valueMissing);
+			console.log(this.validity.typeMismatch);
+		})
+	</script>
+</html>

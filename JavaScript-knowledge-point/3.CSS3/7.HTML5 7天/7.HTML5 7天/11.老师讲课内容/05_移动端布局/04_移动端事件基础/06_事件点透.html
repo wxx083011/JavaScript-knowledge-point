@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title></title>
+		<!--
+			PC端鼠标事件 在移动端也可以正常使用，但是注意 事件的执行 会有300ms的延迟
+		
+			事件点透：
+				1. 在移动端 PC事件 有 300ms的延迟
+				2. 我们点击了页面之后，浏览器会记录点击下去的坐标
+				3. 300ms后，在该坐标找到现在在这的元素 执行事件
+			解决办法：
+				1. 阻止默认事件	(部分安卓机型不支持)
+				2. 不在移动端使用鼠标事件，不用a标签做页面跳转
+		-->
+		<style type="text/css">
+			#test{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100px;
+				height: 100px;
+				background: rgba(255, 192, 203,.5);
+			}
+		</style>
+	</head>
+	<body>
+		<a href="http://www.baidu.com">度娘</a>
+		<div id="test"></div>
+	</body>
+	<script type="text/javascript">
+		var testVar =document.querySelector("#test");
+		testVar.addEventListener("touchstart",function(){
+			testVar.style.display="none";
+		});
+	</script>
+</html>

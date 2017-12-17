@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title>06_移动端入门应用</title>
+		<!--
+			阻止页面上的文字被选中
+			阻止出现菜单
+		-->
+		<style type="text/css">
+			#test{
+				width: 200px;
+				height: 200px;
+				background: pink;
+				margin: 200px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test">
+			snwsnwsnwsnw<br />
+			snwsnwsnwsnw<br />
+			snwsnwsnwsnw<br />
+			<div id="inner">
+				nmxnmxnmxnmx<br />
+				nmxnmxnmxnmx<br />
+				nmxnmxnmxnmx<br />
+			</div>
+			sxsxsxsxsxsx<br />
+			sxsxsxsxsxsx<br />
+			sxsxsxsxsxsx<br />
+		</div>
+	</body>
+	<script type="text/javascript">
+		document.addEventListener("touchstart",function(ev){
+			ev.preventDefault();
+		})
+		
+		var nmx =document.querySelector("#inner");
+		nmx.addEventListener("touchstart",function(ev){
+			ev.stopPropagation();
+		})
+	</script>
+</html>

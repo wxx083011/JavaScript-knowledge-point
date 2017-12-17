@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title></title>
+		<!--
+			touches 当前屏幕上的手指列表
+			targetTouches 当前元素上的手指列表
+			changedTouches 触发当前事件的手指列表
+		-->
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#test{
+				width: 200px;
+				height: 200px;
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test">来啊,来伤害我啊</div>
+	</body>
+	<script type="text/javascript">
+		var testNode =document.querySelector("#test");
+		testNode.addEventListener("mouseup",function(ev){
+			console.log("mouseup");
+//			console.log(ev);
+		})
+		testNode.addEventListener("touchend",function(ev){
+			console.log("touchend");
+//			console.log(ev);
+		})
+
+		
+//		testNode.addEventListener("touchend",function(ev){
+//			this.innerHTML=ev.touches.length;
+//			this.innerHTML=ev.targetTouches.length
+//			this.innerHTML=ev.changedTouches.length;
+//		})
+	</script>
+</html>

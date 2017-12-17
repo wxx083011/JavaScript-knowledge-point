@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+		<title></title>
+		<link rel="stylesheet" href="css/eric-meyer-reset.min.css" />
+		<style type="text/css">
+		
+			@keyframes rotateY{
+				from{
+					transform:rotateY(0deg);
+				}
+				to{
+					transform:rotateY(360deg);
+				}
+			}
+		
+			html,body{
+				height: 100%;
+				overflow: hidden;
+			}
+			#wrap{
+				position: relative;
+				height: 100%;
+				background: pink;
+				perspective: 300px;
+			}
+			#inner{
+				height: 100%;
+				transform-style: preserve-3d;
+			}
+			#logo{
+				position: absolute;
+				left: 35%;
+				top: 50%;
+				margin-top: -15%;
+				width: 30%;
+				animation: rotateY 2s linear infinite;
+			}
+			#logo img{
+				width: 100%;
+				display: block;
+			}
+			#loading{
+				position: absolute;
+				left: 0;
+				top: 50%;
+				width: 100%;
+				font-size: 16px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="inner">
+				<div id="logo">
+					<img src="img/load/logo.png"/>
+				</div>
+				<p id="loading">已加载0%</p>
+			</div>
+		</div>
+	</body>
+	<script src="js/data.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			loading();			
+			
+			function loading(){
+				var loading = document.querySelector("#loading");
+				var imgurl=[];
+				var nub=0;
+				for(var s in imgData){
+					imgurl=imgurl.concat(imgData[s]);
+				}
+				
+				
+				for(var i=0;i<imgurl.length;i++){
+					var imgNode = new Image();
+					imgNode.src = imgurl[i];
+					imgNode.onload = function(){
+						nub++;
+						loading.innerHTML = "已加载 "+(Math.floor(nub/imgurl.length*100))+"%";
+					};
+				}
+			}
+			
+		}
+	</script>
+</html>

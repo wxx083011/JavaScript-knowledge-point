@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function foo() {
+		  setTimeout(() => {
+		    console.log('id:', this.id); //id:42
+		  }, 100);
+		}
+		
+		var id = 21;
+		
+		foo.call({ id: 42 })
+	</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--
+		visible	默认值。内容不会被修剪，会呈现在元素框之外。
+		hidden	内容会被修剪，并且其余内容是不可见的。
+		scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
+		auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。	
+			
+		当父元素,子元素的高宽确定时,
+			overflow: auto; 	父<子,出滚动条
+			overflow: scroll;	不管 父是不是<子,都出滚动条
+			overflow: hidden;	子溢出的都会被截掉
+		-->
+		<style>
+			.box{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				border: 1px solid black;
+				overflow: auto;
+				overflow: hidden;
+				overflow: scroll;
+				
+			}
+			.item{
+				width: 300px;
+				height: 3000px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="item"></div>
+		</div>
+	</body>
+</html>

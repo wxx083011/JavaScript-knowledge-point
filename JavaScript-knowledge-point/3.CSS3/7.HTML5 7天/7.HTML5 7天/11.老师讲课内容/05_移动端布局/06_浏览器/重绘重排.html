@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="myDiv1"></div>
+		<div id="myDiv2"></div>
+		<div id="myDiv3"></div>
+	</body>
+	<script type="text/javascript">
+		var times = 15000;
+
+		console.time(1);
+		for(var i = 0; i < times; i++) {
+		  document.getElementById('myDiv1').innerHTML += 'a';
+		}
+		console.timeEnd(1);
+		
+		
+		
+		console.time(2);
+		var str = '';
+		for(var i = 0; i < times; i++) {
+		  var tmp = document.getElementById('myDiv2').innerHTML;
+		  str += 'a';
+		}
+		document.getElementById('myDiv2').innerHTML = str;
+		console.timeEnd(2);
+		
+		
+		
+		console.time(3);
+		var _str = '';
+		for(var i = 0; i < times; i++) {
+		  _str += 'a';
+		}
+		document.getElementById('myDiv3').innerHTML = _str;
+		console.timeEnd(3);
+		
+		
+		// 1: 2874.619ms
+		// 2: 11.154ms
+		// 3: 1.282ms
+	</script>
+</html>

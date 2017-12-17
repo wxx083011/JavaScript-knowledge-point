@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>atguigu</title>
+		<style type="text/css">
+			/*css reset*/
+			* { font-family: Arial; font-size: 14px; margin: 0; padding: 0; border: none; }
+			a { text-decoration: none; }
+			ul { list-style: none; }
+			
+			/*头部*/
+			header{background: #000;position: relative;}
+			header:after{content: "";position: absolute;left:0;bottom: 0;width: 100%;height: 7px;background: #d6d6d6;}
+			#head{height: 80px;width: 1200px;margin: 0 auto;}
+			#head h1{float: left;margin: 5px 25px;}
+			#head nav{float: right;}
+			#head nav > a{width: 110px;height: 73;float: left;line-height: 73px;color: white;font-size: 24px;text-align: center;}
+			#head nav > a:nth-child(1){background: #433b90;}
+			#head nav > a:nth-child(2){background: #017fcb;}
+			#head nav > a:nth-child(3){background: #78b917;}
+			#head nav > a:nth-child(4){background: #feb800;}
+			#head nav > a:nth-child(5){background: #f27c01;}
+			#head nav > a:nth-child(6){background: #d40112;}
+			#head nav > a{position: relative;z-index: 1;}
+			#head nav > a.active,#head nav > a:hover{padding-bottom: 7px;}
+			
+			/*轮播*/
+			.banner{background: #eaeaea;position: relative;}
+			.banner:after{position: absolute;left: 0;bottom: 0;content: "";width:100%;height: 7px;background: #D6D6D6;}
+			.banner ul{width: 1200px;height: 538px;margin: 0 auto;position: relative;}
+			.banner ul li{width: 610px;height: 300px;position: absolute;overflow: hidden;}
+			.banner ul li.active{border: 2px solid white;box-shadow: 0 30px 220px 22px rgba(0, 0, 0, .35);;width: 880px;height: 400px;z-index:2;position: absolute;left: 0;right: 0;top: 0;bottom: 0;margin: auto;}
+			.banner ul li.left,.banner ul li.right{position: absolute;bottom: 0;top: 0;margin: auto;box-shadow: 0 3px 7px 0 rgba(0, 0, 0, .35);}
+			.banner ul li.left{left: 0;}
+			.banner ul li.right{right: 0;}
+			.banner ul li img{height: 100%;position: absolute;left: -30%;}
+			
+			/*main*/
+			.main{width: 1200px;height: 473px;margin: 34px auto 0;}
+			.main aside{width: 450px;overflow: hidden;float: left;}
+			.main aside h1{margin-bottom: 20px;}
+			.main > aside > dl { position: relative; display: block; height: 74px; margin-bottom: 17px; }
+			.main > aside > dl > dt { position: absolute; top: -1px; left: 92px; font-size: 16px; font-weight: bold; line-height: 16px; text-decoration: underline; }
+			.main > aside > dl > dd:first-of-type { position: absolute; left: 0; }
+			.main > aside > dl > dd:last-of-type { position: absolute; top: 20px; left: 90px; }
+			
+			
+			.main article{width: 720px;overflow: hidden;float: right;}
+			.main article h1,.main aside h1,.main article h1 span,.main aside h1 span{font-size: 30px;}
+			.main article h1 span,.main aside h1 span{color: #7C7C7C;}
+			.main article h1,.main article p,.main article img{margin-bottom: 20px;}
+			
+			/*footer*/
+			footer { position: relative; background: #000; }
+			footer:before { position: absolute; top: -6px; left: 0; width: 100%; height: 6px; content: ''; background: #d6d6d6; }
+			footer > .container { width: 1200px; height: 64px; margin: 0 auto; }
+			footer > .container > p { line-height: 64px; float: left; color: #fff; }
+			footer > .container > .share { float: right; margin: 14px 40px; }
+			footer > .container > .share > img { margin-left: 4px; opacity: .7; }
+			footer > .container > .share > img:hover { opacity: 1; cursor: pointer; }
+		</style>
+	</head>
+	<body>
+		<header>
+			<div id="head">
+				<h1>
+					<a href="javascript:;">
+						<img src="images/logo.png" alt="logo" />
+					</a>
+				</h1>
+				<nav>
+					<a href="javascript:;" class="active">Home</a>
+					<a href="javascript:;">Course</a>
+					<a href="javascript:;">Actual</a>
+					<a href="javascript:;">Plan</a>
+					<a href="javascript:;">FAQ</a>
+					<a href="javascript:;">Notes</a>
+				</nav>
+			</div>
+		</header>
+		<section class="banner">
+			<ul>
+				<li class="left">
+					<img src="images/banner/banner1.jpg"/>
+				</li>
+				<li class="active">
+					<img src="images/banner/banner2.jpg"/>
+				</li>
+				<li class="right">
+					<img src="images/banner/banner3.jpg"/>
+				</li>
+			</ul>
+		</section>
+		<section class="main">
+			<aside>
+				<h1>
+					Recent <span>Course</span>
+				</h1>
+				<dl>
+					<dt>Hyper Text Markup Language</dt>
+					<dd>
+						<img src="images/Course/05_05.png"/>
+					</dd>
+					<dd>HTML is the standard markup language used to create web pages and its elements form the building blocks of all websites.</dd>
+				</dl>
+				<dl>
+					<dt>Cascading Style Sheets</dt>
+					<dd>
+						<img src="images/Course/06_04.png"/>
+					</dd>
+					<dd>Cascading Style Sheets (CSS) is a simple mechanism for adding style (e.g., fonts, colors, spacing) to Web documents.</dd>
+				</dl>
+				<dl>
+					<dt>JavaScript</dt>
+					<dd>
+						<img src="images/Course/02_09.png"/>
+					</dd>
+					<dd>JavaScript is a high-level, dynamic, untyped, and interpreted programming language.</dd>
+				</dl>
+				<dl>
+					<dt>AngularJS</dt>
+					<dd>
+						<img src="images/Course/09_07.png"/>
+					</dd>
+					<dd>AngularJS is an open-source web application framework mainly maintained by Google and by a community of individuals and...</dd>
+				</dl>
+			</aside>
+			<article>
+				<h1>Welcome to <span>Massive Open Online Course!</span></h1>
+				<p>We provide the latest knowledge to help you cope with the changing world!</p>
+				<img src="images/article.jpg">
+				<p>We hope that all the students who love the Internet can be more convenient access to learning resources, using the Internet thinking to change our learning.</p>
+				<p>Focus on IT skills education MOOC, consistent with the development trend of the Internet down to earth's MOOC. We are free, we only teach useful, we concentrate on education.</p>
+			</article>
+		</section>
+		<footer class="footer">
+			<div class="container">
+				<p>Copyright © 2016 atguiguc.com All Rights Reserved.</p>
+				<div class="share">
+					<img src="images/icon/qq.png"/>
+					<img src="images/icon/sina.png"/>
+					<img src="images/icon/weichat.png"/>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#test{
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				background: gray;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="500" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var testNode = document.getElementById("test");
+			if(testNode.getContext){
+				var ctx = testNode.getContext("2d");
+				var imgDatas = ctx.createImageData(100,100);
+				
+				for(var i=0;i<imgDatas.width*imgDatas.height;i++){
+//					imgDatas.data[4*i]=255;
+//					imgDatas.data[4*i+1]=0;
+//					imgDatas.data[4*i+2]=0;
+					imgDatas.data[4*i+3]=100;
+				}
+				
+				ctx.putImageData(imgDatas,100,100)				
+			}
+		}
+		
+		
+	</script>
+</html>

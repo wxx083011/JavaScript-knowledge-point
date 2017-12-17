@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<title>Document</title>
+	<style>
+		#box {
+			width: 200px;
+			height: 200px;
+			background: red;
+			margin: 100px auto;
+			font-size: 20px;
+			color: #fff;
+		}
+	</style>
+	<script type="text/javascript" src="js/transform.js"></script>
+	<script type="text/javascript">
+		document.addEventListener("touchstart",
+			function(e){
+				e.preventDefault();
+			}
+		)
+		window.onload = function() {
+			var box = document.querySelector("#box");
+			var startS = 0;
+			var startR = 0;
+			//  注意缩放的计算是 初始值 * 差值
+			css(box,"translateZ",0); //设置z轴清除 transform在执行的时候残影问题
+			box.addEventListener("gesturestart",
+				function() {
+					startS = css(box,"scale");
+					startR = css(box,"rotate");
+				}
+			);
+			box.addEventListener("gesturechange",
+				function(e) {
+					var disS = e.scale;
+					var disR = e.rotation;
+					css(box,"scale",startS*disS);
+					//this.innerHTML = disR + startR;
+					css(box,"rotate",startR+disR);
+				}
+			);
+			// 安卓没有 多指事件
+		};
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

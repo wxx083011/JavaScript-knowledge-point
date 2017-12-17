@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#test{
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				background: gray;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<canvas id="test" width="500" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+		var testNode =document.getElementById("test");
+		if(testNode.getContext){
+			var ctx = testNode.getContext("2d");
+			
+			var img =new Image();
+			img.src="tg.png";
+			img.onload=function(){
+				draw(this);
+			}
+			
+			function draw(obj){
+				ctx.drawImage(obj,0,0,img.width,img.height)
+			}
+		}
+		
+		
+	</script>
+</html>

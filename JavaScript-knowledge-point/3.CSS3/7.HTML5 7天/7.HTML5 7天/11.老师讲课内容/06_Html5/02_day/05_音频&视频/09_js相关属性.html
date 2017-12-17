@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>音频</title>
+		<!--
+			poster  :   视频播放前的预览图片(读写)
+			width、height  :   设置视频的尺寸(读写)
+			videoWidth、 videoHeight  :   视频的实际尺寸(只读)
+		-->
+	</head>
+	<body>
+		<video id="testV" src="media/sp/OUTPUT.mp4" controls width="300" height="300" poster="media/xfz.png">
+			您的浏览器不支持音频播放（此处的替换的内容不局限于文本信息，可以换成Flash播放器等视频播放插件，或者直接给出媒体文件的链接地址）
+		</video>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var testV = document.getElementById("testV");
+			console.log(testV.poster);
+			console.log(testV.width);
+			console.log(testV.height);
+			console.log(testV.videoWidth);
+			console.log(testV.videoHeight);
+			
+			testV.poster="";
+			testV.width=400;
+			testV.height=400;
+			
+		}
+	</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8">
+	<title></title>
+	<!--
+	1.在option中当selected属性存在时该下拉列表就默认会被勾上 不管selected属性值为什么
+			属性值是selected=false;js引擎解析时也会给它变成checked="false"
+	
+	2.在javaScript中当获取到该复选框节点时将其属性selected赋值为null false或者 ''时 该复选框不会被勾上
+		其余情况则全会被勾上
+	
+	3.在html中标签里属性的属性值都是会被双引号包含住的,你不写,浏览器也会给你加上
+	
+	4.在select中,默认选中第一个列表项,其在js中value属性的值为选中项的value属性值
+	
+	5.注释也算节点,文档节点代表document
+	-->
+	<body>
+		<form method="post" action="">
+			<select id="province" value="province">
+				<option value="" >请选择...</option>
+				<!--<option value="河北省" selected="selected">河北省</option>-->
+				<option value="河北省" >河北省</option>
+				<option value="辽宁省">辽宁省</option>
+				<option value="山东省">山东省</option>
+			</select>
+		</form>
+	</body>
+	
+	<script>
+		var pro = document.getElementById("province");
+		console.log(pro.value);
+		
+		var pros =pro.childNodes;
+		console.log(pros.length);
+		console.log(pros[3]);
+		pros[5].selected="";
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</html>

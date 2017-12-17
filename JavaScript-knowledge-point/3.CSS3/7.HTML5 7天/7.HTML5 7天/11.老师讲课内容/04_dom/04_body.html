@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--
+		body(ie7以上)
+			offsetParent ==>null
+			offsetLeft ==> 0	
+			
+		body(ie7以下)
+			offsetParent ==>null
+			offsetLeft ==> 10
+		-->
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var bodyNode =document.getElementsByTagName("body")[0];
+		alert(bodyNode.offsetParent);
+		alert(bodyNode.offsetLeft);
+//		console.log(bodyNode.offsetParent);
+//		console.log(bodyNode.offsetLeft);
+		
+	</script>
+</html>
